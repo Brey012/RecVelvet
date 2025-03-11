@@ -1,0 +1,89 @@
+.navbar {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(249, 28, 54, 0.1);
+  border-bottom: 1px solid #f91c36; /* Línea inferior */
+  box-shadow: 0 0 5px #f91c36, 0 0 10px #f91c36, 0 0 15px #f91c36, 0 0 1px #f91c36; /* Efecto neón */
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.navbar__navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-right: 20px;
+}
+
+.navbar__navigation-items {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 50px;
+}
+
+.navbar__navigation-items a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 25px;
+}
+
+.navbar__navigation-items a:hover {
+  color: #f91c36;
+}
+
+.navbar__navigation-search {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__navigation-input {
+  width: 150px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: rgb(217, 217, 217, 50%);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  filter: blur(2px);
+}
+
+.navbar__navigation-input:hover {
+  filter: blur(0);
+}
+
+.navbar__navigation-input:focus {
+  outline: none;
+}
+
+.navbar__navigation-icon {
+  width: 24px;
+  height: 24px;
+  color: #f91c36;
+  margin-left: 8px;
+}
+
+.navbar__navigation-button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  color: #f91c36;
+
+  background-color: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
