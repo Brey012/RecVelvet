@@ -1,84 +1,80 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "../css/SliderCartelera.css";
-import {
-  ChevronDoubleLeftIcon,
-  ChevronDoubleRightIcon,
-} from "@heroicons/react/outline";
-import { initializeSlider } from "../Controllers/SliderCartelera";
+import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from "@heroicons/react/outline";
 
 const SliderCartelera = () => {
-  useEffect(() => {
-    initializeSlider();
-  }, []);
+  const [itemActive, setItemActive] = useState(0);
+  const items = [
+    {
+      img: "/public/img/TheGodFatherBg.jpg",
+      thumbnail: "/public/img/TheGodFather.jpg",
+      title: "The Godfather",
+    },
+    {
+      img: "/public/img/InterstellarBg.png",
+      thumbnail: "/public/img/Interstellar.jpg",
+      title: "Interstellar",
+    },
+    {
+      img: "/public/img/StarWarsEp3Bg.jpg",
+      thumbnail: "/public/img/StarWarsEp3.jpg",
+      title: "Star Wars Episode III",
+    },
+  ];
+  const countItem = items.length;
+
+  const showSlider = (index) => {
+    setItemActive(index);
+  };
+
+  const handleNext = () => {
+    setItemActive((prev) => (prev + 1) % countItem);
+  };
+
+  const handlePrev = () => {
+    setItemActive((prev) => (prev - 1 + countItem) % countItem);
+  };
 
   return (
-    <section className="slider">
-        <div className="slider__list">
-          <div className="slider__list-item active">
-            <img src="/public/img/TheGodFatherBg.jpg" alt="The God Father" />
-            <div className="slider_list-content">
-              <h2>Titulo</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium nostrum molestiae mollitia velit saepe hic vitae
-                unde beatae cumque porro?
-              </p>
+    <div className="slider">
+      <div className="slider__list">
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className={`slider__item ${index === itemActive ? "active" : ""}`}
+          >
+            <img src={item.img} alt={item.title} />
+            <div className="content">
+              <p>RECVELVET</p>
+              <h2>{item.title}</h2>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident,</p>
             </div>
           </div>
+        ))}
+      </div>
 
-          <div className="slider__list-item">
-            <img src="/public/img/StarWarsEp3Bg.jpg" alt="Star Wars Ep III" />
-            <div className="slider_list-content">
-              <h2>Titulo</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium nostrum molestiae mollitia velit saepe hic vitae
-                unde beatae cumque porro?
-              </p>
-            </div>
+      <div className="arrows">
+        <button className="prev" onClick={handlePrev}>
+          <ChevronDoubleLeftIcon className="icon" />
+        </button>
+        <button className="next" onClick={handleNext}>
+          <ChevronDoubleRightIcon className="icon" />
+        </button>
+      </div>
+
+      <div className="thumbnail">
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className={`thumbnail__item ${index === itemActive ? "active" : ""}`}
+            onClick={() => showSlider(index)}
+          >
+            <img src={item.thumbnail} alt={item.title} />
+            <p className="title">{item.title}</p>
           </div>
-
-          <div className="slider__list-item">
-            <img src="/public/img/InterstellarBg.png" alt="Interstellar" />
-            <div className="slider_list-content">
-              <h2>Titulo</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium nostrum molestiae mollitia velit saepe hic vitae
-                unde beatae cumque porro?
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="slider__controls">
-          <button id="prev">
-            <ChevronDoubleLeftIcon className="arrow__button" />
-          </button>
-          <button id="next">
-            <ChevronDoubleRightIcon className="arrow__button" />
-          </button>
-        </div>
-
-        <div className="thumbnail">
-          <div className="thumbnail__item active">
-            <img src="/public/img/TheGodFather.jpg" alt="The God Father" />
-            <div className="thumbnail__item-content">The God Father</div>
-          </div>
-
-          <div className="thumbnail__item">
-            <img src="/public/img/StarWarsEp3.jpg" alt="Star Wars Ep III" />
-            <div className="thumbnail__item-content">
-              Star Wars Ep III
-            </div>
-          </div>
-
-          <div className="thumbnail__item">
-            <img src="/public/img/Interstellar.jpg" alt="Interstellar" />
-            <div className="thumbnail__item-content">Interstellar</div>
-          </div>
-        </div>
-    </section>
+        ))}
+      </div>
+    </div>
   );
 };
 

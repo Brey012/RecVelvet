@@ -1,4 +1,5 @@
 .navbar {
+  position: fixed;
   width: 100%;
   height: 100px;
   display: flex;
@@ -6,7 +7,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 1000;
   background-color: rgba(249, 28, 54, 0.1);
   border-bottom: 1px solid #f91c36; /* Línea inferior */
   box-shadow: 0 0 5px #f91c36, 0 0 10px #f91c36, 0 0 15px #f91c36, 0 0 1px #f91c36; /* Efecto neón */
