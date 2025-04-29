@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/Navbar.css";
-import { SearchIcon } from "@heroicons/react/outline";
-import { UserCircleIcon } from "@heroicons/react/outline";
+import { SearchIcon, UserCircleIcon } from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -24,9 +24,9 @@ const NavBar = () => {
             <SearchIcon className="navbar__navigation-icon" />
           </li>
         </ul>
-        <button className="navbar__navigation-button">
+        <Link to="/login" className="navbar__navigation-button">
           <UserCircleIcon />
-        </button>
+        </Link>
       </section>
     </nav>
   );
