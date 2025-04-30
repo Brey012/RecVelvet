@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../css/Login.css";
 import { registerUser, loginUser } from "/src/services/authServices";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [isRegister, setIsRegister] = useState(false); // Alternar entre registro e inicio de sesión
+  const [isRegister, setIsRegister] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -17,7 +17,7 @@ const Login = () => {
   });
   const [message, setMessage] = useState("");
 
-  const navigate = useNavigate(); // Hook para redirigir
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,7 +47,7 @@ const Login = () => {
         password: "",
         confirmPassword: "",
       });
-      setIsRegister(false); // Cambiar a inicio de sesión
+      setIsRegister(false);
     }
   };
 
@@ -59,7 +59,11 @@ const Login = () => {
     setMessage(result.message);
 
     if (result.success) {
-      navigate("/"); // Redirige al componente SliderCartelera
+      // Guardar datos del usuario en localStorage
+      localStorage.setItem("user", JSON.stringify(result.user));
+
+      // Redirigir al componente SliderCartelera
+      navigate("/");
     }
   };
 
