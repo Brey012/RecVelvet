@@ -1,8 +1,67 @@
 import React, { useState } from "react";
 import "../css/Login.css";
+import { registerUser, loginUser } from "/src/services/authServices";
+import { useNavigate } from "react-router-dom"; // Importa useNavigate
 
 const Login = () => {
-  const [isRegister, setIsRegister] = useState(false); // Estado para alternar entre login y registro
+  const [isRegister, setIsRegister] = useState(false); // Alternar entre registro e inicio de sesión
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+  const [message, setMessage] = useState("");
+
+  const navigate = useNavigate(); // Hook para redirigir
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (isRegister) {
+      setFormData({ ...formData, [name]: value });
+    } else {
+      setLoginData({ ...loginData, [name]: value });
+    }
+  };
+
+  // Validar y registrar un nuevo usuario
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
+
+    if (formData.password !== formData.confirmPassword) {
+      setMessage("Las contraseñas no coinciden.");
+      return;
+    }
+
+    const result = await registerUser(formData);
+    setMessage(result.message);
+
+    if (result.success) {
+      setFormData({
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+      setIsRegister(false); // Cambiar a inicio de sesión
+    }
+  };
+
+  // Validar inicio de sesión
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+
+    const result = await loginUser(loginData);
+    setMessage(result.message);
+
+    if (result.success) {
+      navigate("/"); // Redirige al componente SliderCartelera
+    }
+  };
 
   return (
     <section className="login__container">
@@ -30,106 +89,89 @@ const Login = () => {
 
       <div className="login__container-form">
         {isRegister ? (
-          // Formulario de registro
           <div className="login__container-register">
             <h2>Regístrate</h2>
-            <form className="login__container-register-form">
+            <form className="login__container-register-form" onSubmit={handleRegisterSubmit}>
               <div className="form__content">
-                <label className="login__container-register-label">
-                  Nombre Completo
-                </label>
+                <label>Nombre Completo</label>
                 <input
                   type="text"
+                  name="fullName"
                   placeholder="Nombre Completo"
-                  className="login__container-register-input"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
                 />
               </div>
               <div className="form__content">
-                <label className="login__container-register-label">
-                  Correo Electrónico
-                </label>
-                <input
-                  type="email"
-                  placeholder="Correo Electrónico"
-                  className="login__container-register-input"
-                />
-              </div>
-              <div className="form__content">
-                <label className="login__container-register-label">
-                  Contraseña
-                </label>
-                <input
-                  type="password"
-                  placeholder="Contraseña"
-                  className="login__container-register-input"
-                />
-              </div>
-              <div className="form__content">
-                <label className="login__container-register-label">
-                  Confirmar Contraseña
-                </label>
-                <input
-                  type="password"
-                  placeholder="Confirmar Contraseña"
-                  className="login__container-register-input"
-                />
-              </div>
-              <button
-                type="submit"
-                className="login__container-register-button"
-              >
-                Registrarse
-              </button>
-            </form>
-            <p>
-              ¿Ya tienes cuenta?{" "}
-              <span
-                className="login__toggle-link"
-                onClick={() => setIsRegister(false)}
-              >
-                Inicia sesión
-              </span>
-            </p>
-          </div>
-        ) : (
-          // Formulario de inicio de sesión
-          <div className="login__container-ingresar">
-            <h2>Iniciar Sesión</h2>
-            <form className="login__container-ingresar-form">
-              <div className="login__container-correo">
                 <label>Correo Electrónico</label>
                 <input
-                  type="text"
+                  type="email"
+                  name="email"
                   placeholder="Correo Electrónico"
-                  className="login__container-login-inicio-input"
+                  value={formData.email}
+                  onChange={handleInputChange}
                 />
               </div>
-              <div className="login__container-password">
+              <div className="form__content">
                 <label>Contraseña</label>
                 <input
                   type="password"
+                  name="password"
                   placeholder="Contraseña"
-                  className="login__container-login-inicio-input"
+                  value={formData.password}
+                  onChange={handleInputChange}
                 />
               </div>
-              <button
-                type="submit"
-                className="login__container-login-inicio-button"
-              >
-                Iniciar Sesión
-              </button>
+              <div className="form__content">
+                <label>Confirmar Contraseña</label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirmar Contraseña"
+                  value={formData.confirmPassword}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <button type="submit">Registrarse</button>
+            </form>
+            <p>
+              ¿Ya tienes cuenta?{" "}
+              <span onClick={() => setIsRegister(false)}>Inicia sesión</span>
+            </p>
+          </div>
+        ) : (
+          <div className="login__container-ingresar">
+            <h2>Iniciar Sesión</h2>
+            <form className="login__container-ingresar-form" onSubmit={handleLoginSubmit}>
+              <div className="form__content">
+                <label>Correo Electrónico</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Correo Electrónico"
+                  value={loginData.email}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form__content">
+                <label>Contraseña</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Contraseña"
+                  value={loginData.password}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <button type="submit">Iniciar Sesión</button>
             </form>
             <p>
               ¿No tienes cuenta?{" "}
-              <span
-                className="login__toggle-link"
-                onClick={() => setIsRegister(true)}
-              >
-                Regístrate
-              </span>
+              <span onClick={() => setIsRegister(true)}>Regístrate</span>
             </p>
           </div>
         )}
+        {message && <p className="message">{message}</p>}
       </div>
     </section>
   );
