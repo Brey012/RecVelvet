@@ -1,4 +1,4 @@
-.navbar {
+/* .navbar {
   position: fixed;
   width: 100%;
   height: 100px;
@@ -9,8 +9,8 @@
   left: 0;
   z-index: 1000;
   background-color: rgba(249, 28, 54, 0.1);
-  border-bottom: 1px solid #f91c36; /* Línea inferior */
-  box-shadow: 0 0 5px #f91c36, 0 0 10px #f91c36, 0 0 15px #f91c36, 0 0 1px #f91c36; /* Efecto neón */
+  border-bottom: 1px solid #f91c36; 
+  box-shadow: 0 0 5px #f91c36, 0 0 10px #f91c36, 0 0 15px #f91c36, 0 0 1px #f91c36; 
 }
 
 .navbar__logo {
@@ -87,4 +87,95 @@
   background-color: transparent;
   font-size: 20px;
   cursor: pointer;
+} */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  background: rgba(0, 0, 0, 0.6); /* Fondo oscuro translúcido */
+  backdrop-filter: blur(5px); /* Efecto de vidrio esmerilado */
+  border-bottom: 1px solid #f91c36; /* Línea inferior brillante */
+  box-shadow: 0 2px 20px 2px #f91c36, 0 2px 10px 1px #f91c36; /* Efecto neón */
+  z-index: 1000;
+}
+
+.navbar__logo {
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(249, 28, 54, 0.5);
+}
+
+.navbar__navigation {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navbar__navigation-items {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+}
+
+.navbar__navigation-items a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar__navigation-items a:hover {
+  color: #f91c36;
+}
+
+.navbar__navigation-search {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #f91c36;
+  padding-bottom: 3px;
+}
+
+.navbar__navigation-input {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  width: 160px;
+  padding: 4px;
+}
+
+.navbar__navigation-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.navbar__navigation-input:focus {
+  outline: none;
+}
+
+.navbar__navigation-icon {
+  width: 22px;
+  height: 22px;
+  color: #f91c36;
+  margin-left: 8px;
+}
+
+.navbar__navigation-button {
+  color: #f91c36;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.navbar__navigation-button:hover {
+  transform: scale(1.1);
 }
