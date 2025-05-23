@@ -6,26 +6,34 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <nav className="navbar">
-      <img
-        src="/public/img/RecVelvet_Logo.jpeg"
-        alt=""
-        className="navbar__logo"
-      />
+      <Link to="/">
+        <img
+          src="/img/RecVelvet_Logo.jpeg"
+          alt="Logo de JolyGuacamoly"
+          className="navbar__logo"
+        />
+      </Link>
+
       <section className="navbar__navigation">
         <ul className="navbar__navigation-items">
           <li>
-            <a href="#">Cartelera</a>
+            <Link to="/cartelera">Cartelera</Link>
           </li>
           <li>
-            <a href="#">Promociones</a>
+            <Link to="/promociones">Promociones</Link>
           </li>
           <li className="navbar__navigation-search">
-            <input type="text" className="navbar__navigation-input" />
+            <input
+              type="text"
+              className="navbar__navigation-input"
+              placeholder="Buscar película..."
+            />
             <SearchIcon className="navbar__navigation-icon" />
           </li>
         </ul>
-        <Link to="/login" className="navbar__navigation-button">
-          <UserCircleIcon />
+
+        <Link to="/login" className="navbar__navigation-button" title="Iniciar sesión">
+          <UserCircleIcon className="navbar__user-icon" />
         </Link>
       </section>
     </nav>
