@@ -1,0 +1,142 @@
+
+.cartelera__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 80%;
+  height: 70%;
+}
+
+.cartelera__title {
+  font-size: 42px;
+  color: #f91c36;
+}
+
+/* GRID CARTELERA */
+.cartelera__movies {
+  width: 100%;
+  height: 80%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1.5fr 3fr 1fr 1fr 2fr;
+  gap: 20px;
+}
+
+ .cartelera__movies div {
+  border-radius: 8px;
+  box-shadow: 0 0 6px 2px #f91c36;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeInZoom 0.6s ease forwards;
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+    box-shadow 0.4s ease,
+    filter 0.3s ease;
+  will-change: transform, box-shadow;
+  overflow: hidden;
+}
+
+/* Efecto al pasar el mouse */
+.cartelera__movies div:hover {
+  transform: scale(1.1); /* Se agranda más */
+  box-shadow: 0 0 30px 8px rgba(249, 28, 54, 0.8); /* Sombra roja visible */
+  filter: brightness(1.1); /* Ilumina la imagen */
+  z-index: 3;
+}
+
+
+@keyframes fadeInZoom {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ANIMACIÓN ESCALONADA */
+.godfather    { animation-delay: 0.1s; }
+.starwars     { animation-delay: 0.2s; }
+.seven        { animation-delay: 0.3s; }
+.batman       { animation-delay: 0.4s; }
+.back         { animation-delay: 0.5s; }
+.godfellas    { animation-delay: 0.6s; }
+.interstellar { animation-delay: 0.7s; }
+
+/* BOTÓN DE RESERVA */
+.cartelera__movies button {
+  grid-row: 1 / span 1;
+  background-color: #f91c36;
+  border-radius: 8px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeInZoom 0.8s ease forwards;
+  animation-delay: 0.8s;
+  transition: transform 0.3s ease;
+}
+
+.cartelera__movies button:hover {
+  transform: scale(1.05);
+}
+
+/* BACKGROUNDS PERSONALIZADOS */
+.godfather {
+  grid-row: 1 / span 5;
+  background-image: url("/public/img/TheGodFather.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.starwars {
+  grid-row: 1 / span 3;
+  background-image: url("/public/img/StarWarsEp3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.seven {
+  grid-column: span 2;
+  grid-row: 1 / span 2;
+  background-image: url("/public/img/Seven.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.batman {
+  grid-row: span 4;
+  background-image: url("/public/img/TheDarkKnight.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.godfellas {
+  grid-column: 2;
+  grid-row: span 2;
+  background-image: url("/public/img/GodFellas.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.back {
+  grid-row: span 3;
+  background-image: url("/public/img/Backtothefuture.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.interstellar {
+  grid-row: 3 / span 3;
+  background-image: url("/public/img/InterstellarBg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
