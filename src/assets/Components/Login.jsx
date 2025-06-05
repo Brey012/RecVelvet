@@ -187,6 +187,7 @@ import React, { useState } from "react";
 import "../css/Login.css";
 import { registerUser, loginUser } from "/src/services/authServices";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
   const [isRegister, setIsRegister] = useState(false);
@@ -203,6 +204,7 @@ const Login = () => {
   const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -244,10 +246,8 @@ const Login = () => {
     setMessage(result.message);
 
     if (result.success) {
-      // Guardar datos del usuario en localStorage
-      localStorage.setItem("user", JSON.stringify(result.user));
-
-      // Redirigir al componente SliderCartelera
+      // Guardar datos del usuario en el contexto
+      login({ email: loginData.email });
       navigate("/");
     }
   };
