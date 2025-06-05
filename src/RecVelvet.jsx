@@ -7,6 +7,7 @@ import Login from "./assets/Components/Login";
 import Cartelera from "./pages/Cartelera";
 import { AuthProvider } from "./context/AuthContext";
 import PrivateRoute from "./context/PrivateRoute";
+import Reservas from "./pages/reserva/Reservas";
 
 function AppRoutes() {
   const location = useLocation();
@@ -30,6 +31,14 @@ function AppRoutes() {
           element={
             <PrivateRoute>
               <Cartelera />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/reservas"
+          element={
+            <PrivateRoute>
+              <Reservas />
             </PrivateRoute>
           }
         />
