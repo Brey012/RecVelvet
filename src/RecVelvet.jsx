@@ -9,6 +9,7 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import PrivateRoute from "./context/PrivateRoute";
 import Reservas from "./pages/reserva/Reservas";
 import Admin from "./pages/Admin";
+import PeliculasInfo from "./pages/PeliculasInfo";
 
 function AppRoutes() {
   const location = useLocation();
@@ -41,6 +42,14 @@ function AppRoutes() {
           element={
             <PrivateRoute>
               <Reservas />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/peliculasinfo"
+          element={
+            <PrivateRoute>
+              <PeliculasInfo />
             </PrivateRoute>
           }
         />

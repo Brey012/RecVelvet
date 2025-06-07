@@ -20,7 +20,7 @@ const SliderCartelera = () => {
     {
       img: "/public/img/StarWarsEp3Bg.jpg",
       thumbnail: "/public/img/StarWarsEp3.jpg",
-      title: "Star Wars Episode III",
+      title: "Star Wars: Episode III - Revenge of the Sith",
       sinopsis: "Anakin Skywalker se convierte en Darth Vader mientras la República Galáctica cae y el Imperio emerge en una épica batalla entre el bien y el mal.",
     },
   ];
@@ -51,6 +51,49 @@ const SliderCartelera = () => {
               <p>RECVELVET</p>
               <h2>{item.title}</h2>
               <p>{item.sinopsis}</p>
+              <button
+                className="slider__cta-btn"
+                style={{
+                  background: 'rgba(249,28,54,0.13)',
+                  color: '#fff',
+                  border: '1px solid #f91c36',
+                  borderRadius: 10,
+                  padding: '10px 28px',
+                  fontSize: 18,
+                  fontWeight: 700,
+                  margin: '18px 0 0 0',
+                  cursor: 'pointer',
+                  boxShadow: '0 2px 12px #0002',
+                  transition: 'background 0.18s, color 0.18s, border 0.18s',
+                  outline: 'none',
+                  opacity: 0.93,
+                }}
+                onMouseOver={e => {
+                  e.currentTarget.style.background = '#f91c36';
+                  e.currentTarget.style.color = '#fff';
+                  e.currentTarget.style.border = '2px solid #f91c36';
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.background = 'rgba(249,28,54,0.13)';
+                  e.currentTarget.style.color = '#fff';
+                  e.currentTarget.style.border = '2px solid #f91c36';
+                }}
+                onFocus={e => {
+                  e.currentTarget.style.background = '#f91c36';
+                  e.currentTarget.style.color = '#fff';
+                  e.currentTarget.style.border = '2px solid #f91c36';
+                }}
+                onBlur={e => {
+                  e.currentTarget.style.background = 'rgba(249,28,54,0.13)';
+                  e.currentTarget.style.color = '#fff';
+                  e.currentTarget.style.border = '2px solid #f91c36';
+                }}
+                onClick={() => {
+                  window.location.href = `/reservas?pelicula=${encodeURIComponent(item.title)}`;
+                }}
+              >
+                Reservar
+              </button>
             </div>
           </div>
         ))}

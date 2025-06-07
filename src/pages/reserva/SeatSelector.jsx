@@ -4,10 +4,11 @@ import '../../styles/SeatSelector.css';
 const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 const seatsPerRow = 16;
 
-const SeatSelector = ({ setAsientosSeleccionados }) => {
+const SeatSelector = ({ setAsientosSeleccionados, asientosOcupados = [] }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
 
   const toggleSeat = (seatId) => {
+    if (asientosOcupados.includes(seatId)) return; // No permitir seleccionar ocupados
     const isSelected = selectedSeats.includes(seatId);
     const updated = isSelected
       ? selectedSeats.filter(seat => seat !== seatId)
@@ -43,23 +44,26 @@ const SeatSelector = ({ setAsientosSeleccionados }) => {
             {[...Array(seatsPerRow)].map((_, i) => {
               const seatId = `${row}${i + 1}`;
               const selected = selectedSeats.includes(seatId);
+              const ocupado = asientosOcupados.includes(seatId);
               return (
                 <button
                   key={seatId}
-                  className={`seat-selector__seat ${selected ? 'selected' : ''}`}
+                  className={`seat-selector__seat${selected ? ' selected' : ''}${ocupado ? ' ocupado' : ''}`}
                   onClick={() => toggleSeat(seatId)}
+                  disabled={ocupado}
                   style={{
                     width: 18,
                     height: 18,
                     borderRadius: '40%',
                     margin: '1px',
-                    border: selected ? '2px solid #f91c36' : '1px solid #bbb',
-                    background: selected ? '#f91c36' : '#232323',
+                    border: selected ? '2px solid #f91c36' : ocupado ? '2px solid #888' : '1px solid #bbb',
+                    background: ocupado ? '#888' : selected ? '#f91c36' : '#232323',
                     transition: 'all 0.2s',
                     boxShadow: selected ? '0 0 4px #f91c36aa' : '0 1px 2px #0002',
                     flexShrink: 0,
+                    cursor: ocupado ? 'not-allowed' : 'pointer',
                   }}
-                  title={seatId}
+                  title={ocupado ? 'Reservado' : seatId}
                 />
               );
             })}

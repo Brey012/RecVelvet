@@ -1,8 +1,12 @@
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SeatSelector from "./SeatSelector";
 import ReservaModal from "./ReservaModal";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/Reservas.css";
+import { nextDay } from "date-fns";
+import ComboSelector from "./ComboSelector";
 
 const fechas = [
   { label: "Lun", value: "Lunes" },
@@ -15,20 +19,96 @@ const fechas = [
 const horas = ["10:00", "12:00", "14:00", "16:00", "18:00"];
 const formatos = ["2D", "3D", "4DX", "IMAX"];
 
+const diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves"];
+
+const getNextWeekdayDate = (weekday) => {
+  const daysMap = {
+    Lunes: 1,
+    Martes: 2,
+    Miércoles: 3,
+    Jueves: 4,
+  };
+  const today = new Date();
+  const targetDay = daysMap[weekday];
+  if (targetDay === undefined) return null;
+  return nextDay(today, targetDay);
+};
+
 const Reservas = () => {
   const location = useLocation();
-  const selectedMovie = location.state?.movie || null;
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  // Detectar película desde state o query param
+  useEffect(() => {
+    // 1. Intentar desde location.state
+    if (location.state?.movie) {
+      setSelectedMovie(location.state.movie);
+      return;
+    }
+    // 2. Intentar desde query param
+    const params = new URLSearchParams(location.search);
+    const peliculaQuery = params.get("pelicula");
+    if (peliculaQuery) {
+      // Buscar la película en la API
+      fetch("http://localhost:3001/peliculas")
+        .then((res) => res.json())
+        .then((data) => {
+          const found = data.find(
+            (p) => p.titulo_original === peliculaQuery
+          );
+          if (found) {
+            setSelectedMovie({
+              name: found.titulo_original,
+              ...found,
+            });
+          }
+        });
+    }
+  }, [location]);
 
   const [fecha, setFecha] = useState(null);
   const [hora, setHora] = useState(null);
   const [formato, setFormato] = useState(null);
   const [asientos, setAsientos] = useState([]);
+  const [asientosOcupados, setAsientosOcupados] = useState([]);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [customDate, setCustomDate] = useState(null);
+  const [showCombo, setShowCombo] = useState(false);
 
   // Para guardar la reserva (puedes luego usar contexto o localStorage)
   const [reserva, setReserva] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
+  useEffect(() => {
+    // Solo buscar si hay película, fecha, hora y formato seleccionados
+    if (selectedMovie && fecha && hora && formato) {
+      fetch("http://localhost:3001/reservas")
+        .then((res) => res.json())
+        .then((data) => {
+          // Filtrar reservas que coincidan con la selección actual
+          const ocupados = data
+            .filter(
+              (r) =>
+                r.pelicula === selectedMovie.name &&
+                r.fecha === fecha &&
+                r.hora === hora &&
+                r.formato === formato
+            )
+            .flatMap((r) => r.asientos);
+          setAsientosOcupados(ocupados);
+        });
+    } else {
+      setAsientosOcupados([]);
+    }
+  }, [selectedMovie, fecha, hora, formato]);
+
   const handleConfirm = async () => {
+    setShowCombo(true);
+  };
+
+  const handleComboSelect = async (combo) => {
+    setShowCombo(false);
+    // Guardar reserva con combo
     const user = JSON.parse(localStorage.getItem("user"));
     const nuevaReserva = {
       pelicula: selectedMovie?.name,
@@ -37,8 +117,32 @@ const Reservas = () => {
       formato,
       asientos,
       cliente: user?.fullName || "Desconocido",
+      combo: combo ? combo.nombre : null,
+      comboPrecio: combo ? combo.precio : null,
     };
-    // Guardar en el backend (json-server)
+    await fetch("http://localhost:3001/reservas", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(nuevaReserva),
+    });
+    setReserva(nuevaReserva);
+    setModalOpen(true);
+  };
+
+  const handleComboSkip = async () => {
+    setShowCombo(false);
+    // Guardar reserva sin combo
+    const user = JSON.parse(localStorage.getItem("user"));
+    const nuevaReserva = {
+      pelicula: selectedMovie?.name,
+      fecha,
+      hora,
+      formato,
+      asientos,
+      cliente: user?.fullName || "Desconocido",
+      combo: null,
+      comboPrecio: null,
+    };
     await fetch("http://localhost:3001/reservas", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -59,21 +163,145 @@ const Reservas = () => {
           <div className="reserva__fecha">
             <h2>Fecha</h2>
             <div className="reserva__fecha-content">
-              {fechas.map((f) => (
+              {fechas.map((f) => {
+                let isSelected = false;
+                if (f.value === "Calendario" && customDate) {
+                  isSelected = true;
+                } else if (diasSemana.includes(f.value) && customDate) {
+                  // Si el día rápido coincide con el día de la semana de customDate
+                  const dayName = customDate
+                    .toLocaleDateString("es-ES", { weekday: "long" })
+                    .toLowerCase();
+                  isSelected = dayName === f.value.toLowerCase();
+                } else if (!customDate && fecha === f.value) {
+                  isSelected = true;
+                }
+                return (
+                  <div
+                    key={f.value}
+                    className={isSelected ? "selected" : ""}
+                    style={{
+                      border: isSelected ? "2px solid #f91c36" : "",
+                      background: isSelected ? "#f91c36" : "",
+                      color: isSelected ? "#fff" : "",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => {
+                      if (f.value === "Calendario") {
+                        setShowCalendar(true);
+                      } else if (diasSemana.includes(f.value)) {
+                        const nextDate = getNextWeekdayDate(f.value);
+                        setCustomDate(nextDate);
+                        setFecha(nextDate ? nextDate.toLocaleDateString() : null);
+                        setShowCalendar(false);
+                      }
+                    }}
+                  >
+                    {f.label}
+                  </div>
+                );
+              })}
+              {/* Mostrar SIEMPRE el calendario si showCalendar es true */}
+              {showCalendar && (
                 <div
-                  key={f.value}
-                  className={fecha === f.value ? "selected" : ""}
                   style={{
-                    border: fecha === f.value ? "2px solid #f91c36" : "",
-                    background: fecha === f.value ? "#f91c36" : "",
-                    color: fecha === f.value ? "#fff" : "",
-                    cursor: "pointer",
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    width: "100vw",
+                    height: "100vh",
+                    background: "rgba(0,0,0,0.45)",
+                    backdropFilter: "blur(2px)",
+                    zIndex: 1000,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    animation: "fadeInBg 0.2s",
                   }}
-                  onClick={() => setFecha(f.value)}
+                  onClick={() => setShowCalendar(false)}
                 >
-                  {f.label}
+                  <div
+                    style={{
+                      background: "#181818",
+                      borderRadius: 18,
+                      padding: 28,
+                      boxShadow: "0 8px 32px #000a",
+                      minWidth: 320,
+                      position: "relative",
+                      animation: "popIn 0.25s",
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <button
+                      style={{
+                        position: "absolute",
+                        top: 10,
+                        right: 16,
+                        background: "none",
+                        border: "none",
+                        fontSize: 32,
+                        cursor: "pointer",
+                        color: "#f91c36",
+                        fontWeight: 700,
+                        transition: "color 0.2s",
+                      }}
+                      onClick={() => setShowCalendar(false)}
+                      title="Cerrar"
+                    >
+                      &times;
+                    </button>
+                    <h3
+                      style={{
+                        color: "#f91c36",
+                        textAlign: "center",
+                        marginBottom: 12,
+                        fontWeight: 600,
+                        letterSpacing: 1,
+                      }}
+                    >
+                      Selecciona una fecha
+                    </h3>
+                    <DatePicker
+                      selected={customDate}
+                      onChange={(date) => {
+                        setCustomDate(date);
+                        setFecha(date ? date.toLocaleDateString() : null);
+                        setShowCalendar(false);
+                      }}
+                      minDate={new Date()}
+                      inline
+                    />
+                    {customDate && (
+                      <div
+                        style={{
+                          textAlign: "center",
+                          marginTop: 10,
+                          color: "#fff",
+                          fontWeight: 500,
+                          fontSize: 18,
+                        }}
+                      >
+                        {customDate.toLocaleDateString("es-ES", {
+                          weekday: "long",
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </div>
+                    )}
+                  </div>
+                  <style>{`
+                    @keyframes fadeInBg {
+                      from { opacity: 0; }
+                      to { opacity: 1; }
+                    }
+                    @keyframes popIn {
+                      from { transform: scale(0.85); opacity: 0; }
+                      to { transform: scale(1); opacity: 1; }
+                    }
+                  `}</style>
                 </div>
-              ))}
+              )}
             </div>
           </div>
           <div className="reserva__hora">
@@ -117,7 +345,10 @@ const Reservas = () => {
           </div>
         </div>
         <div className="reserva__seats">
-          <SeatSelector setAsientosSeleccionados={setAsientos} />
+          <SeatSelector
+            setAsientosSeleccionados={setAsientos}
+            asientosOcupados={asientosOcupados}
+          />
         </div>
       </div>
       <button
@@ -130,6 +361,9 @@ const Reservas = () => {
       >
         Confirmar selección
       </button>
+      {showCombo && (
+        <ComboSelector onSelect={handleComboSelect} onSkip={handleComboSkip} />
+      )}
       <ReservaModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}

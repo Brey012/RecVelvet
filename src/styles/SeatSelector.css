@@ -81,6 +81,28 @@
   box-shadow: 0 0 4px #f91c36aa;
 }
 
+.seat-selector__seat.ocupado {
+  background: #888 !important;
+  border: 2px solid #f91c36 !important;
+  color: #fff !important;
+  position: relative;
+}
+
+.seat-selector__seat.ocupado::after {
+  content: '\1F512'; /* Unicode candado */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  pointer-events: none;
+}
+
 .seat-selector__confirm-btn {
   margin-top: 20px;
   padding: 12px 24px;

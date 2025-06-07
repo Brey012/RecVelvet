@@ -16,41 +16,44 @@
   ],
   "reservas": [
     {
-      "id": "be43",
-      "pelicula": "Seven",
-      "fecha": "Lunes",
-      "hora": "12:00",
-      "formato": "2D",
+      "id": "5ad2",
+      "pelicula": "Star Wars: Episode III - Revenge of the Sith",
+      "fecha": "11/6/2025",
+      "hora": "16:00",
+      "formato": "4DX",
       "asientos": [
-        "C10",
-        "H12"
+        "C4",
+        "C5"
       ],
-      "cliente": "Administrador"
+      "cliente": "Administrador",
+      "combo": "Combo Familiar",
+      "comboPrecio": 35000
     },
     {
-      "id": "427a",
-      "pelicula": "Seven",
-      "fecha": "Miércoles",
-      "hora": "12:00",
-      "formato": "IMAX",
+      "id": "11a5",
+      "pelicula": "Godfellas",
+      "fecha": "11/6/2025",
+      "hora": "14:00",
+      "formato": "3D",
       "asientos": [
-        "C9",
-        "D5",
-        "D9"
+        "D5"
       ],
-      "cliente": "Administrador"
+      "cliente": "Administrador",
+      "combo": "",
+      "comboPrecio": 17000
     },
     {
-      "id": "f810",
-      "pelicula": "The Dark Knight",
-      "fecha": "Miércoles",
-      "hora": "12:00",
-      "formato": "IMAX",
+      "id": "7395",
+      "pelicula": "Godfellas",
+      "fecha": "11/6/2025",
+      "hora": "14:00",
+      "formato": "4DX",
       "asientos": [
-        "D14",
-        "D13"
+        "E9"
       ],
-      "cliente": "Breyner"
+      "cliente": "Administrador",
+      "combo": "Combo Familiar",
+      "comboPrecio": 35000
     }
   ],
   "peliculas": [
@@ -162,7 +165,7 @@
       "directores": [
         "Christopher Nolan"
       ],
-      "estado": "cartelera",
+      "estado": "estreno",
       "sinopsis": "Un grupo de exploradores viaja a través de un agujero de gusano en el espacio en busca de un nuevo hogar para la humanidad."
     },
     {
