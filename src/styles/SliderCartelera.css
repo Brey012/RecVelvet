@@ -160,6 +160,29 @@ slider {
   }
 }
 
+@media (max-width: 900px) {
+  .slider .slider__list .slider__item .content {
+    width: 90vw;
+    left: 2vw;
+    top: 20%;
+  }
+  .slider .slider__list .slider__item .content h2 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .slider .slider__list .slider__item .content {
+    width: 98vw;
+    left: 1vw;
+    top: 10%;
+    padding: 0 2vw;
+  }
+  .slider .slider__list .slider__item .content h2 {
+    font-size: 22px;
+  }
+}
+
 .slider__list {
   overflow: hidden;
 }

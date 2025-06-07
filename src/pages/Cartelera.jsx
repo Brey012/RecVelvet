@@ -1,22 +1,38 @@
-import "../assets/css/Cartelera.css";
-import { useNavigate } from "react-router-dom"; // Agrega esto
+import "../styles/Cartelera.css";
+import { useNavigate } from "react-router-dom";
+
+const movies = [
+  { key: "godfather", name: "The Godfather" },
+  { key: "starwars", name: "Star Wars" },
+  { key: "seven", name: "Seven" },
+  { key: "batman", name: "The Dark Knight" },
+  { key: "back", name: "Back to the Future" },
+  { key: "godfellas", name: "Godfellas" },
+  { key: "interstellar", name: "Interstellar" },
+];
 
 const Cartelera = () => {
-  const navigate = useNavigate(); // Agrega esto
+  const navigate = useNavigate();
+
+  const handleMovieClick = (movie) => {
+    navigate("/reservas", { state: { movie } });
+  };
 
   return (
     <div className="cartelera__container">
-        <h1 className="cartelera__title">Cartelera</h1>
-        <div className="cartelera__movies">
-            <div className="godfather"></div>
-            <div className="starwars"></div>
-            <div className="seven"></div>
-            <button onClick={() => navigate("/reservas")}>Reserva Ya!</button>
-            <div className="batman"></div>
-            <div className="back"></div>
-            <div className="godfellas"></div>
-            <div className="interstellar"></div>
-        </div>
+      <h1 className="cartelera__title">Cartelera</h1>
+      <div className="cartelera__movies">
+        {movies.map((movie) => (
+          <div
+            key={movie.key}
+            className={movie.key}
+            style={{ cursor: "pointer" }}
+            onClick={() => handleMovieClick(movie)}
+            title={movie.name}
+          />
+        ))}
+        <button onClick={() => navigate("/reservas")}>Reserva Ya!</button>
+      </div>
     </div>
   );
 };

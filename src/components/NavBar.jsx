@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import "../css/Navbar.css";
+import "../styles/NavBar.css";
 import { SearchIcon, UserCircleIcon } from "@heroicons/react/outline";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
 const NavBar = () => {
   const { user, logout } = useAuth();
@@ -40,9 +40,11 @@ const NavBar = () => {
           <li>
             <Link to="/cartelera">Cartelera</Link>
           </li>
-          <li>
-            <Link to="/promociones">Promociones</Link>
-          </li>
+          {user?.role === "admin" && (
+            <li>
+              <Link to="/admin">Admin</Link>
+            </li>
+          )}
           <li className="navbar__navigation-search">
             <input
               type="text"

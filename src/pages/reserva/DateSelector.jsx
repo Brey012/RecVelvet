@@ -1,4 +1,4 @@
-import "../../assets/css/DateSelector.css";
+import "../../styles/DateSelector.css";
 
 const DateSelector = () => {
   return (

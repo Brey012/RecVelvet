@@ -1,34 +1,371 @@
 {
   "users": [
     {
+      "id": "admin",
+      "fullName": "Administrador",
+      "email": "admin@recvelvet.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "8241",
+      "fullName": "Breyner",
+      "email": "Brey@brey.com",
+      "password": "brey1234"
+    }
+  ],
+  "reservas": [
+    {
+      "id": "be43",
+      "pelicula": "Seven",
+      "fecha": "Lunes",
+      "hora": "12:00",
+      "formato": "2D",
+      "asientos": [
+        "C10",
+        "H12"
+      ],
+      "cliente": "Administrador"
+    },
+    {
+      "id": "427a",
+      "pelicula": "Seven",
+      "fecha": "Miércoles",
+      "hora": "12:00",
+      "formato": "IMAX",
+      "asientos": [
+        "C9",
+        "D5",
+        "D9"
+      ],
+      "cliente": "Administrador"
+    },
+    {
+      "id": "f810",
+      "pelicula": "The Dark Knight",
+      "fecha": "Miércoles",
+      "hora": "12:00",
+      "formato": "IMAX",
+      "asientos": [
+        "D14",
+        "D13"
+      ],
+      "cliente": "Breyner"
+    }
+  ],
+  "peliculas": [
+    {
       "id": "1",
-      "fullName": "Juan Pérez",
-      "email": "juan.perez@example.com",
-      "password": "123456"
+      "titulo_original": "The Godfather",
+      "anio": 1972,
+      "duracion": 175,
+      "generos": [
+        "Crimen",
+        "Drama"
+      ],
+      "directores": [
+        "Francis Ford Coppola"
+      ],
+      "estado": "estreno",
+      "sinopsis": "La historia de la familia criminal Corleone en Nueva York, liderada por Don Vito Corleone, y la transformación de su hijo Michael en el nuevo jefe de la familia."
     },
     {
       "id": "2",
-      "fullName": "María López",
-      "email": "maria.lopez@example.com",
-      "password": "password123"
+      "titulo_original": "Star Wars: Episode III - Revenge of the Sith",
+      "anio": 2005,
+      "duracion": 140,
+      "generos": [
+        "Acción",
+        "Aventura",
+        "Ciencia ficción"
+      ],
+      "directores": [
+        "George Lucas"
+      ],
+      "estado": "estreno",
+      "sinopsis": "Anakin Skywalker se convierte en Darth Vader mientras la República Galáctica cae y el Imperio emerge en una épica batalla entre el bien y el mal."
     },
     {
-      "id": "eaaa",
-      "fullName": "Breyner",
-      "email": "Brey@gmail",
-      "password": "brey1234"
+      "id": "3",
+      "titulo_original": "Se7en",
+      "anio": 1995,
+      "duracion": 127,
+      "generos": [
+        "Crimen",
+        "Drama",
+        "Misterio"
+      ],
+      "directores": [
+        "David Fincher"
+      ],
+      "estado": "cartelera",
+      "sinopsis": "Dos detectives investigan una serie de asesinatos inspirados en los siete pecados capitales, enfrentándose a un asesino meticuloso y perturbador."
     },
     {
-      "id": "1e53",
-      "fullName": "Cocodrilo Bombardino",
-      "email": "coco@g",
-      "password": "2222"
+      "id": "4",
+      "titulo_original": "The Dark Knight",
+      "anio": 2008,
+      "duracion": 152,
+      "generos": [
+        "Acción",
+        "Crimen",
+        "Drama"
+      ],
+      "directores": [
+        "Christopher Nolan"
+      ],
+      "estado": "estreno",
+      "sinopsis": "Batman enfrenta al Joker, un criminal caótico que amenaza con sumir a Ciudad Gótica en la anarquía, poniendo a prueba los límites del héroe."
     },
     {
-      "id": "4992",
-      "fullName": "Juan",
-      "email": "Juan@g",
-      "password": "111"
+      "id": "5",
+      "titulo_original": "Back to the Future",
+      "anio": 1985,
+      "duracion": 116,
+      "generos": [
+        "Aventura",
+        "Comedia",
+        "Ciencia ficción"
+      ],
+      "directores": [
+        "Robert Zemeckis"
+      ],
+      "estado": "cartelera",
+      "sinopsis": "Marty McFly viaja accidentalmente al pasado en un DeLorean modificado y debe asegurarse de que sus padres se conozcan para poder regresar al futuro."
+    },
+    {
+      "id": "6",
+      "titulo_original": "Goodfellas",
+      "anio": 1990,
+      "duracion": 146,
+      "generos": [
+        "Biografía",
+        "Crimen",
+        "Drama"
+      ],
+      "directores": [
+        "Martin Scorsese"
+      ],
+      "estado": "estreno",
+      "sinopsis": "La vida de Henry Hill y su ascenso y caída en la mafia neoyorquina, mostrando el glamour y la brutalidad del crimen organizado."
+    },
+    {
+      "id": "7",
+      "titulo_original": "Interstellar",
+      "anio": 2014,
+      "duracion": 169,
+      "generos": [
+        "Aventura",
+        "Drama",
+        "Ciencia ficción"
+      ],
+      "directores": [
+        "Christopher Nolan"
+      ],
+      "estado": "cartelera",
+      "sinopsis": "Un grupo de exploradores viaja a través de un agujero de gusano en el espacio en busca de un nuevo hogar para la humanidad."
+    },
+    {
+      "id": "8",
+      "titulo_original": "Pulp Fiction",
+      "anio": 1994,
+      "duracion": 154,
+      "generos": [
+        "Crimen",
+        "Drama"
+      ],
+      "directores": [
+        "Quentin Tarantino"
+      ],
+      "estado": "estreno",
+      "sinopsis": "Las vidas de varios personajes se entrelazan en una serie de historias criminales llenas de humor negro y giros inesperados."
+    },
+    {
+      "id": "9",
+      "titulo_original": "Forrest Gump",
+      "anio": 1994,
+      "duracion": 142,
+      "generos": [
+        "Drama",
+        "Romance"
+      ],
+      "directores": [
+        "Robert Zemeckis"
+      ],
+      "estado": "cartelera",
+      "sinopsis": "Forrest Gump, un hombre con un bajo coeficiente intelectual pero gran corazón, presencia y participa en momentos clave de la historia estadounidense."
+    },
+    {
+      "id": "10",
+      "titulo_original": "Inception",
+      "anio": 2010,
+      "duracion": 148,
+      "generos": [
+        "Acción",
+        "Aventura",
+        "Ciencia ficción"
+      ],
+      "directores": [
+        "Christopher Nolan"
+      ],
+      "estado": "estreno",
+      "sinopsis": "Un ladrón especializado en robar secretos a través de los sueños debe realizar una tarea imposible: implantar una idea en la mente de su objetivo."
+    },
+    {
+      "id": "11",
+      "titulo_original": "Fight Club",
+      "anio": 1999,
+      "duracion": 139,
+      "generos": [
+        "Drama"
+      ],
+      "directores": [
+        "David Fincher"
+      ],
+      "estado": "estreno",
+      "sinopsis": "Un hombre insatisfecho con su vida se une a un club de peleas clandestino, desencadenando una serie de eventos caóticos y reveladores."
+    },
+    {
+      "id": "12",
+      "titulo_original": "The Matrix",
+      "anio": 1999,
+      "duracion": 136,
+      "generos": [
+        "Acción",
+        "Ciencia ficción"
+      ],
+      "directores": [
+        "Lana Wachowski",
+        "Lilly Wachowski"
+      ],
+      "estado": "cartelera",
+      "sinopsis": "Un hacker descubre la verdad sobre la realidad y lidera la rebelión contra las máquinas que controlan a la humanidad."
+    },
+    {
+      "id": "13",
+      "titulo_original": "The Shawshank Redemption",
+      "anio": 1994,
+      "duracion": 142,
+      "generos": [
+        "Drama"
+      ],
+      "directores": [
+        "Frank Darabont"
+      ],
+      "estado": "estreno",
+      "sinopsis": "Un banquero condenado injustamente a cadena perpetua forja una amistad y encuentra esperanza mientras planea su escape de la prisión."
+    },
+    {
+      "id": "14",
+      "titulo_original": "The Lord of the Rings: The Return of the King",
+      "anio": 2003,
+      "duracion": 201,
+      "generos": [
+        "Aventura",
+        "Drama",
+        "Fantasía"
+      ],
+      "directores": [
+        "Peter Jackson"
+      ],
+      "estado": "cartelera",
+      "sinopsis": "La batalla final por la Tierra Media mientras Frodo y Sam intentan destruir el Anillo Único en el Monte del Destino."
+    },
+    {
+      "id": "15",
+      "titulo_original": "Gladiator",
+      "anio": 2000,
+      "duracion": 155,
+      "generos": [
+        "Acción",
+        "Aventura",
+        "Drama"
+      ],
+      "directores": [
+        "Ridley Scott"
+      ],
+      "estado": "estreno",
+      "sinopsis": "Un general romano es traicionado y busca venganza como gladiador en la antigua Roma."
+    },
+    {
+      "id": "16",
+      "titulo_original": "Titanic",
+      "anio": 1997,
+      "duracion": 195,
+      "generos": [
+        "Drama",
+        "Romance"
+      ],
+      "directores": [
+        "James Cameron"
+      ],
+      "estado": "cartelera",
+      "sinopsis": "La historia de amor entre Jack y Rose a bordo del trágico viaje inaugural del Titanic."
+    },
+    {
+      "id": "17",
+      "titulo_original": "Jurassic Park",
+      "anio": 1993,
+      "duracion": 127,
+      "generos": [
+        "Aventura",
+        "Ciencia ficción",
+        "Thriller"
+      ],
+      "directores": [
+        "Steven Spielberg"
+      ],
+      "estado": "estreno",
+      "sinopsis": "Un parque temático con dinosaurios clonados se convierte en un caos cuando las criaturas escapan y amenazan a los visitantes."
+    },
+    {
+      "id": "18",
+      "titulo_original": "The Silence of the Lambs",
+      "anio": 1991,
+      "duracion": 118,
+      "generos": [
+        "Crimen",
+        "Drama",
+        "Thriller"
+      ],
+      "directores": [
+        "Jonathan Demme"
+      ],
+      "estado": "estreno",
+      "sinopsis": "Una joven agente del FBI busca la ayuda de un brillante pero peligroso asesino para atrapar a otro criminal serial."
+    },
+    {
+      "id": "19",
+      "titulo_original": "Avatar",
+      "anio": 2009,
+      "duracion": 162,
+      "generos": [
+        "Acción",
+        "Aventura",
+        "Fantasía"
+      ],
+      "directores": [
+        "James Cameron"
+      ],
+      "estado": "cartelera",
+      "sinopsis": "En el exuberante mundo de Pandora, los humanos y los Na'vi entran en conflicto por los recursos del planeta."
+    },
+    {
+      "id": "20",
+      "titulo_original": "The Lion King",
+      "anio": 1994,
+      "duracion": 88,
+      "generos": [
+        "Animación",
+        "Aventura",
+        "Drama"
+      ],
+      "directores": [
+        "Roger Allers",
+        "Rob Minkoff"
+      ],
+      "estado": "estreno",
+      "sinopsis": "El joven león Simba debe reclamar su lugar como rey tras la trágica muerte de su padre, enfrentando traiciones y desafíos."
     }
   ]
 }

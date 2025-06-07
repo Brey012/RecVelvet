@@ -1,16 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import "./assets/css/RecVelvet.css";
-import NavBar from "./assets/Components/NavBar";
-import SliderCartelera from "./assets/Components/SliderCartelera";
-import Login from "./assets/Components/Login";
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import "./styles/RecVelvet.css";
+import NavBar from "./components/NavBar";
+import SliderCartelera from "./components/SliderCartelera";
+import Login from "./components/Login";
 import Cartelera from "./pages/Cartelera";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 import PrivateRoute from "./context/PrivateRoute";
 import Reservas from "./pages/reserva/Reservas";
+import Admin from "./pages/Admin";
 
 function AppRoutes() {
   const location = useLocation();
+  const { user } = useAuth();
   const hideNav = location.pathname === "/login";
 
   return (
@@ -39,6 +41,14 @@ function AppRoutes() {
           element={
             <PrivateRoute>
               <Reservas />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              {user?.role === "admin" ? <Admin /> : <Navigate to="/" />}
             </PrivateRoute>
           }
         />

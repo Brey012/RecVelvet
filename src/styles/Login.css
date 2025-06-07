@@ -236,3 +236,116 @@
 .login__toggle-link:hover {
   color: #d0172b;
 }
+
+.login__btn--social {
+  background: #232323;
+  color: #fff;
+  border: 1.5px solid #444;
+  margin: 0 8px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  box-shadow: none;
+  transition: border 0.2s, background 0.2s;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login__btn--social img {
+  filter: grayscale(0.2) brightness(1.2);
+}
+
+.login__divider {
+  width: 100%;
+  text-align: center;
+  margin: 18px 0 10px 0;
+  color: #888;
+  position: relative;
+  font-size: 1rem;
+}
+
+.login__divider span {
+  background: #181818;
+  padding: 0 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.login__divider:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, #f91c36 50%, transparent 100%);
+  z-index: 1;
+}
+
+.login__socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.login__btn {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  background: #f91c36;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px #0003;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.login__btn--primary:hover {
+  background: #c31327;
+  transform: scale(1.03);
+}
+
+@media (max-width: 900px) {
+  .login__container-info {
+    width: 80%;
+  }
+  .login__container-info h2 {
+    font-size: 32px;
+  }
+  .login__container-info h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .login__container {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 0;
+  }
+  .login__container-info {
+    width: 100%;
+    padding: 0 8px;
+  }
+  .login__container-info-panel {
+    width: 100%;
+  }
+  .login__container-info h2 {
+    font-size: 18px;
+  }
+  .login__container-info h3 {
+    font-size: 14px;
+  }
+  .login__container-info p {
+    font-size: 12px;
+  }
+}

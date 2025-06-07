@@ -33,30 +33,52 @@
   gap: 5px;
 }
 
+.seat-selector__col-number {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0;
+  margin: 0 1px;
+}
+
 .seat-selector__row-label {
-  width: 20px;
-  color: white;
+  width: 18px;
+  color: #aaa;
   text-align: center;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 11px;
 }
 
 .seat-selector__seat {
-  width: 20px;
-  height: 20px;
-  border: 2px solid white;
-  background-color: transparent;
-  border-radius: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 40%;
+  margin: 1px;
+  border: 1px solid #bbb;
+  background-color: #232323;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px #0002;
   cursor: pointer;
-  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .seat-selector__seat:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #f91c36cc;
+  border-color: #f91c36;
+  color: #fff;
 }
 
 .seat-selector__seat.selected {
   background-color: #f91c36;
   border-color: #f91c36;
+  box-shadow: 0 0 4px #f91c36aa;
 }
 
 .seat-selector__confirm-btn {
@@ -79,4 +101,31 @@
 
 .seat-selector__confirm-btn:hover:not(:disabled) {
   background-color: #d1122c;
+}
+
+@media (max-width: 900px) {
+  .seat-selector__wrapper {
+    padding: 8px;
+  }
+  .seat-selector__screen {
+    width: 100%;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .seat-selector__wrapper {
+    padding: 2px;
+  }
+  .seat-selector__screen {
+    font-size: 10px;
+    padding: 4px;
+  }
+  .seat-selector__row-label, .seat-selector__col-number {
+    font-size: 8px;
+  }
+  .seat-selector__seat {
+    width: 12px;
+    height: 12px;
+  }
 }

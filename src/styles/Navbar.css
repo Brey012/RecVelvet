@@ -250,3 +250,36 @@
 .navbar__logout-btn:hover {
   background: #222;
 }
+
+@media (max-width: 900px) {
+  .navbar {
+    height: 70px;
+  }
+  .navbar__logo img {
+    height: 40px;
+  }
+  .navbar__navigation-items a {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 8px 0;
+  }
+  .navbar__navigation {
+    flex-direction: column;
+    gap: 8px;
+    margin-right: 0;
+  }
+  .navbar__navigation-items {
+    flex-direction: column;
+    gap: 8px;
+    height: auto;
+  }
+  .navbar__navigation-items a {
+    font-size: 14px;
+  }
+}

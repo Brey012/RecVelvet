@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/SliderCartelera.css";
+import "../styles/SliderCartelera.css";
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from "@heroicons/react/outline";
 
 const SliderCartelera = () => {
@@ -9,16 +9,19 @@ const SliderCartelera = () => {
       img: "/public/img/TheGodFatherBg.jpg",
       thumbnail: "/public/img/TheGodFather.jpg",
       title: "The Godfather",
+      sinopsis: "La historia de la familia criminal Corleone en Nueva York, liderada por Don Vito Corleone, y la transformación de su hijo Michael en el nuevo jefe de la familia.",
     },
     {
       img: "/public/img/InterstellarBg.png",
       thumbnail: "/public/img/Interstellar.jpg",
       title: "Interstellar",
+      sinopsis: "Un grupo de exploradores viaja a través de un agujero de gusano en el espacio en busca de un nuevo hogar para la humanidad.",
     },
     {
       img: "/public/img/StarWarsEp3Bg.jpg",
       thumbnail: "/public/img/StarWarsEp3.jpg",
       title: "Star Wars Episode III",
+      sinopsis: "Anakin Skywalker se convierte en Darth Vader mientras la República Galáctica cae y el Imperio emerge en una épica batalla entre el bien y el mal.",
     },
   ];
   const countItem = items.length;
@@ -47,7 +50,7 @@ const SliderCartelera = () => {
             <div className="content">
               <p>RECVELVET</p>
               <h2>{item.title}</h2>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident,</p>
+              <p>{item.sinopsis}</p>
             </div>
           </div>
         ))}

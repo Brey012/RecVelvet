@@ -47,7 +47,7 @@ export const loginUser = async (loginData) => {
     );
 
     if (user) {
-      return { success: true, message: `Bienvenido, ${user.fullName}!` };
+      return { success: true, message: `Bienvenido, ${user.fullName}!`, user }; // <-- Devuelve el usuario completo
     } else {
       return { success: false, message: "Correo o contraseña incorrectos." };
     }
