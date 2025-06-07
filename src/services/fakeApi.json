@@ -98,6 +98,20 @@
       "cliente": "Fabian",
       "combo": "Combo Nachos",
       "comboPrecio": 20000
+    },
+    {
+      "id": "adc1",
+      "pelicula": "Back to the Future",
+      "fecha": "11/6/2025",
+      "hora": "14:00",
+      "formato": "3D",
+      "asientos": [
+        "D5",
+        "D6"
+      ],
+      "cliente": "Fabian",
+      "combo": null,
+      "comboPrecio": null
     }
   ],
   "peliculas": [

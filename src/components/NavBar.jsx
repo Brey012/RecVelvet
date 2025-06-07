@@ -77,9 +77,11 @@ const NavBar = () => {
           <li>
             <Link to="/cartelera">Cartelera</Link>
           </li>
-          <li>
-            <Link to="/mireserva">Mi reserva</Link>
-          </li>
+          {user?.role !== "admin" && (
+            <li>
+              <Link to="/mireserva">Mi reserva</Link>
+            </li>
+          )}
           {user?.role === "admin" && (
             <li>
               <Link to="/admin">Admin</Link>

@@ -8,35 +8,35 @@ const combos = [
     nombre: "Combo Clásico",
     descripcion: "Crispetas medianas + Gaseosa 400ml",
     precio: 18000,
-    img: "/img/combo1.png"
+    img: "/img/ComboClasico.png"
   },
   {
     id: 2,
     nombre: "Combo Pareja",
     descripcion: "Crispetas grandes + 2 Gaseosas 400ml",
     precio: 25000,
-    img: "/img/combo2.png"
+    img: "/img/ComboPareja.png"
   },
   {
     id: 3,
     nombre: "Combo Nachos",
     descripcion: "Nachos + Queso + Gaseosa 400ml",
     precio: 20000,
-    img: "/img/combo3.png"
+    img: "/img/ComboNachos.png"
   },
   {
     id: 4,
-    nombre: "Combo Dulce",
-    descripcion: "Crispetas dulces + Agua 400ml",
-    precio: 17000,
-    img: "/img/combo4.png"
+    nombre: "Combo Amigos",
+    descripcion: "2 Crispetas medianas + 2 Gaseosas 400ml",
+    precio: 27000,
+    img: "/img/ComboAmigos.png"
   },
   {
     id: 5,
     nombre: "Combo Familiar",
     descripcion: "Crispetas extra grandes + 3 Gaseosas 400ml + Nachos",
     precio: 35000,
-    img: "/img/combo5.png"
+    img: "/img/ComboFamiliar.png"
   },
 ];
 
@@ -54,7 +54,7 @@ const ComboSelector = ({ onSelect, onSkip }) => {
               className={`combo-selector__item${selected === combo.id ? " selected" : ""}`}
               onClick={() => setSelected(combo.id)}
             >
-              <img src={combo.img} alt={combo.nombre} className="combo-selector__img" />
+              <img src={combo.img} alt={combo.nombre} className="combo-selector__img" style={{ borderRadius: 18, boxShadow: '0 2px 16px #f91c36cc, 0 1px 8px #000a', border: selected === combo.id ? '3px solid #f91c36' : '2px solid #232323', transition: 'border 0.2s, box-shadow 0.2s' }} />
               <div className="combo-selector__info">
                 <h3>{combo.nombre}</h3>
                 <p>{combo.descripcion}</p>
