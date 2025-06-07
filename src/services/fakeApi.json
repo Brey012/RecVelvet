@@ -12,48 +12,92 @@
       "fullName": "Breyner",
       "email": "Brey@brey.com",
       "password": "brey1234"
+    },
+    {
+      "id": "1a11",
+      "fullName": "Fabian",
+      "email": "fa@fa",
+      "password": "fa1234"
     }
   ],
   "reservas": [
     {
-      "id": "5ad2",
-      "pelicula": "Star Wars: Episode III - Revenge of the Sith",
-      "fecha": "11/6/2025",
-      "hora": "16:00",
-      "formato": "4DX",
-      "asientos": [
-        "C4",
-        "C5"
-      ],
-      "cliente": "Administrador",
-      "combo": "Combo Familiar",
-      "comboPrecio": 35000
-    },
-    {
-      "id": "11a5",
-      "pelicula": "Godfellas",
-      "fecha": "11/6/2025",
+      "id": "9b87",
+      "pelicula": "Interstellar",
+      "fecha": "9/7/2025",
       "hora": "14:00",
       "formato": "3D",
-      "asientos": [
-        "D5"
-      ],
-      "cliente": "Administrador",
-      "combo": "",
-      "comboPrecio": 17000
-    },
-    {
-      "id": "7395",
-      "pelicula": "Godfellas",
-      "fecha": "11/6/2025",
-      "hora": "14:00",
-      "formato": "4DX",
       "asientos": [
         "E9"
       ],
       "cliente": "Administrador",
+      "combo": null,
+      "comboPrecio": null
+    },
+    {
+      "id": "8215",
+      "pelicula": "Seven",
+      "fecha": "11/6/2025",
+      "hora": "14:00",
+      "formato": "4DX",
+      "asientos": [
+        "C8"
+      ],
+      "cliente": "Administrador",
+      "combo": "Combo Clásico",
+      "comboPrecio": 18000
+    },
+    {
+      "id": "3894",
+      "pelicula": "Star Wars",
+      "fecha": "11/6/2025",
+      "hora": "12:00",
+      "formato": "2D",
+      "asientos": [
+        "F7"
+      ],
+      "cliente": "Administrador",
+      "combo": "Combo Nachos",
+      "comboPrecio": 20000
+    },
+    {
+      "id": "9f5c",
+      "pelicula": "The Godfather",
+      "fecha": "11/6/2025",
+      "hora": "14:00",
+      "formato": "3D",
+      "asientos": [
+        "G5"
+      ],
+      "cliente": "Fabian",
+      "combo": "Combo Dulce",
+      "comboPrecio": 17000
+    },
+    {
+      "id": "4620",
+      "pelicula": "Star Wars",
+      "fecha": "10/6/2025",
+      "hora": "14:00",
+      "formato": "3D",
+      "asientos": [
+        "F3"
+      ],
+      "cliente": "Fabian",
       "combo": "Combo Familiar",
       "comboPrecio": 35000
+    },
+    {
+      "id": "57a6",
+      "pelicula": "Godfellas",
+      "fecha": "10/6/2025",
+      "hora": "12:00",
+      "formato": "3D",
+      "asientos": [
+        "E8"
+      ],
+      "cliente": "Fabian",
+      "combo": "Combo Nachos",
+      "comboPrecio": 20000
     }
   ],
   "peliculas": [

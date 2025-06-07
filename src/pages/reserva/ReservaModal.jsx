@@ -50,33 +50,22 @@ const ReservaModal = ({ open, onClose, reserva }) => {
                     ? reserva.asientos.join(", ")
                     : reserva.asientos}
                 </li>
-              </ul>
-              {reserva.combo && (
-                <div className="reserva-modal__combo">
-                  <h4
-                    style={{
-                      color: "#f91c36",
-                      marginTop: 18,
-                      marginBottom: 6,
-                    }}
-                  >
-                    Combo seleccionado
-                  </h4>
-                  <div style={{ fontWeight: 600 }}>
-                    {reserva.combo}{" "}
+                {reserva.combo && (
+                  <li>
+                    <b>Combo:</b> {reserva.combo}{" "}
                     {reserva.comboPrecio && (
                       <span
                         style={{
-                          color: "#fff",
-                          fontWeight: 400,
+                          color: "#f91c36",
+                          fontWeight: 600,
                         }}
                       >
                         - ${reserva.comboPrecio.toLocaleString()}
                       </span>
                     )}
-                  </div>
-                </div>
-              )}
+                  </li>
+                )}
+              </ul>
             </div>
           </div>
         </div>

@@ -10,6 +10,7 @@ import PrivateRoute from "./context/PrivateRoute";
 import Reservas from "./pages/reserva/Reservas";
 import Admin from "./pages/Admin";
 import PeliculasInfo from "./pages/PeliculasInfo";
+import MiReserva from "./pages/MiReserva"
 
 function AppRoutes() {
   const location = useLocation();
@@ -58,6 +59,14 @@ function AppRoutes() {
           element={
             <PrivateRoute>
               {user?.role === "admin" ? <Admin /> : <Navigate to="/" />}
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mireserva"
+          element={
+            <PrivateRoute>
+              <MiReserva />
             </PrivateRoute>
           }
         />
