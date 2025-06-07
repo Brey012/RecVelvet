@@ -112,6 +112,20 @@
       "cliente": "Fabian",
       "combo": null,
       "comboPrecio": null
+    },
+    {
+      "id": "421d",
+      "pelicula": "Inception",
+      "fecha": "10/6/2025",
+      "hora": "16:00",
+      "formato": "3D",
+      "asientos": [
+        "D4",
+        "D5"
+      ],
+      "cliente": "Administrador",
+      "combo": "Combo Nachos",
+      "comboPrecio": 20000
     }
   ],
   "peliculas": [
