@@ -307,6 +307,20 @@ const Admin = () => {
                     style={{ borderRadius: 6, padding: '4px 8px', fontSize: 14, marginBottom: 2 }}
                   />
                 </label>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <span>Sala:</span>
+                  <select
+                    name="sala"
+                    value={reservaEdit.sala || ''}
+                    onChange={handleReservaChange}
+                    style={{ borderRadius: 6, padding: '4px 8px', fontSize: 14, marginBottom: 2 }}
+                  >
+                    <option value="Sala Kubrick">Sala Kubrick</option>
+                    <option value="Sala Lynch">Sala Lynch</option>
+                    <option value="Sala Tarantino">Sala Tarantino</option>
+                    <option value="Sala Hitchcock">Sala Hitchcock</option>
+                  </select>
+                </label>
               </div>
               {/* Columna derecha: combos */}
               <div

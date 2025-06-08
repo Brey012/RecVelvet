@@ -62,15 +62,23 @@
 
 @media (max-width: 600px) {
   .peliculasinfo__container {
-    padding: 18px 6vw 18px 6vw;
+    padding: 8px 2vw 8px 2vw;
     max-width: 98vw;
+    gap: 8px;
   }
   .peliculasinfo__img {
-    width: 140px;
-    height: 200px;
+    width: 80px;
+    height: 120px;
+    border-radius: 8px;
   }
   .peliculasinfo__title {
-    font-size: 1.3rem;
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  .peliculasinfo__details {
+    padding: 8px 8px;
+    font-size: 0.9rem;
+    border-radius: 6px;
   }
 }
 

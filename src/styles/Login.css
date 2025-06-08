@@ -328,24 +328,28 @@
 
 @media (max-width: 600px) {
   .login__container {
-    flex-direction: column;
-    height: auto;
-    padding: 12px 0;
+    padding: 4px 0;
   }
-  .login__container-info {
-    width: 100%;
-    padding: 0 8px;
+  .login__container-info, .login__container-form {
+    padding: 2px 0;
+    gap: 6px;
   }
-  .login__container-info-panel {
-    width: 100%;
+  .login__container-info h2, .login__container-info h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
   }
-  .login__container-info h2 {
-    font-size: 18px;
+  .login__container-info p, .login__container-info ul, .login__container-form label {
+    font-size: 0.9rem;
   }
-  .login__container-info h3 {
-    font-size: 14px;
+  .login__container-form input {
+    height: 28px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    padding: 4px;
   }
-  .login__container-info p {
-    font-size: 12px;
+  .login__btn {
+    font-size: 0.9rem;
+    padding: 6px 0;
+    border-radius: 6px;
   }
 }

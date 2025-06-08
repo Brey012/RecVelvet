@@ -126,6 +126,61 @@
       "cliente": "Administrador",
       "combo": "Combo Nachos",
       "comboPrecio": 20000
+    },
+    {
+      "id": "51e3",
+      "pelicula": "Star Wars",
+      "fecha": "11/6/2025",
+      "hora": "14:00",
+      "formato": "4DX",
+      "asientos": [
+        "C5",
+        "F11"
+      ],
+      "cliente": "Administrador",
+      "combo": "Combo Familiar",
+      "comboPrecio": 35000
+    },
+    {
+      "id": "ec1a",
+      "pelicula": "Star Wars",
+      "fecha": "11/6/2025",
+      "hora": "14:00",
+      "formato": "4DX",
+      "asientos": [
+        "C5",
+        "F11"
+      ],
+      "cliente": "Administrador",
+      "combo": "Combo Amigos",
+      "comboPrecio": 27000
+    },
+    {
+      "id": "760b",
+      "pelicula": "The Dark Knight",
+      "fecha": "11/6/2025",
+      "hora": "14:00",
+      "formato": "3D",
+      "asientos": [
+        "I6"
+      ],
+      "cliente": "Administrador",
+      "combo": "Combo Familiar",
+      "comboPrecio": 35000
+    },
+    {
+      "id": "6e4d",
+      "pelicula": "The Dark Knight",
+      "fecha": "11/6/2025",
+      "hora": "16:00",
+      "formato": "IMAX",
+      "sala": "Sala Tarantino",
+      "asientos": [
+        "F7"
+      ],
+      "cliente": "Administrador",
+      "combo": "Combo Nachos",
+      "comboPrecio": 20000
     }
   ],
   "peliculas": [

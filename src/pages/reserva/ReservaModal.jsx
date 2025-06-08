@@ -93,6 +93,9 @@ const ReservaModal = ({ open, onClose, reserva }) => {
                   <b>Formato:</b> {reserva.formato}
                 </li>
                 <li>
+                  <b>Sala:</b> {reserva.sala}
+                </li>
+                <li>
                   <b>Asientos:</b>{" "}
                   {Array.isArray(reserva.asientos)
                     ? reserva.asientos.join(", ")

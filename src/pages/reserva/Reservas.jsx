@@ -34,6 +34,13 @@ const getNextWeekdayDate = (weekday) => {
   return nextDay(today, targetDay);
 };
 
+const salas = [
+  "Sala Kubrick",
+  "Sala Lynch",
+  "Sala Tarantino",
+  "Sala Hitchcock"
+];
+
 const Reservas = () => {
   const location = useLocation();
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -74,6 +81,7 @@ const Reservas = () => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [customDate, setCustomDate] = useState(null);
   const [showCombo, setShowCombo] = useState(false);
+  const [sala, setSala] = useState(salas[0]);
 
   // Para guardar la reserva (puedes luego usar contexto o localStorage)
   const [reserva, setReserva] = useState(null);
@@ -115,6 +123,7 @@ const Reservas = () => {
       fecha,
       hora,
       formato,
+      sala,
       asientos,
       cliente: user?.fullName || "Desconocido",
       combo: combo ? combo.nombre : null,
@@ -138,6 +147,7 @@ const Reservas = () => {
       fecha,
       hora,
       formato,
+      sala,
       asientos,
       cliente: user?.fullName || "Desconocido",
       combo: null,
@@ -160,6 +170,33 @@ const Reservas = () => {
       )}
       <div className="reserva__container-content">
         <div className="reserva__selectors">
+          {/* SALA SELECTOR */}
+          <div className="reserva__sala">
+            <h2>Sala</h2>
+            <div className="reserva__sala-content">
+              {salas.map((s) => (
+                <div
+                  key={s}
+                  className={sala === s ? "selected" : ""}
+                  style={{
+                    border: sala === s ? "2px solid #f91c36" : "",
+                    background: sala === s ? "#f91c36" : "",
+                    color: sala === s ? "#fff" : "",
+                    cursor: "pointer",
+                    marginRight: 8,
+                    marginBottom: 4,
+                    padding: "8px 18px",
+                    borderRadius: 8,
+                    fontWeight: sala === s ? 700 : 500,
+                    fontSize: 16,
+                  }}
+                  onClick={() => setSala(s)}
+                >
+                  {s}
+                </div>
+              ))}
+            </div>
+          </div>
           <div className="reserva__fecha">
             <h2>Fecha</h2>
             <div className="reserva__fecha-content">
@@ -355,7 +392,7 @@ const Reservas = () => {
         className="seat-selector__confirm-btn"
         style={{ marginTop: 20 }}
         disabled={
-          !selectedMovie || !fecha || !hora || !formato || asientos.length === 0
+          !selectedMovie || !fecha || !hora || !formato || asientos.length === 0 || !sala
         }
         onClick={handleConfirm}
       >

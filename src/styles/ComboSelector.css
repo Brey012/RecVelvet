@@ -104,10 +104,37 @@
   .combo-selector__modal {
     width: 98vw;
     min-width: 0;
-    padding: 18px 4vw;
+    padding: 8px 2vw;
+    border-radius: 8px;
   }
   .combo-selector__list {
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
+  }
+  .combo-selector__item {
+    padding: 8px 6px;
+    font-size: 0.9rem;
+    min-width: 90px;
+    max-width: 120px;
+    border-radius: 8px;
+  }
+  .combo-selector__img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+  }
+  .combo-selector__info h3 {
+    font-size: 1rem;
+  }
+  .combo-selector__info p {
+    font-size: 0.85rem;
+  }
+  .combo-selector__precio {
+    font-size: 1rem;
+  }
+  .combo-selector__btn {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    border-radius: 6px;
   }
 }

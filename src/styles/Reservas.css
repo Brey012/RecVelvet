@@ -46,7 +46,7 @@
   align-items: center; /* Centra las secciones de selección */
 }
 
-.reserva__fecha, .reserva__hora, .reserva__formato {
+.reserva__fecha, .reserva__hora, .reserva__formato, .reserva__sala {
   background: #232323;
   border-radius: 12px;
   padding: 18px 20px 14px 20px;
@@ -58,7 +58,7 @@
   align-items: center;
 }
 
-.reserva__fecha-content, .reserva__hora-content, .reserva__formato-content {
+.reserva__fecha-content, .reserva__hora-content, .reserva__formato-content, .reserva__sala-content {
   display: flex;
   gap: 16px;
   margin-top: 8px;
@@ -66,7 +66,7 @@
   align-items: center;
 }
 
-.reserva__fecha-content div, .reserva__hora-content div, .reserva__formato-content div {
+.reserva__fecha-content div, .reserva__hora-content div, .reserva__formato-content div, .reserva__sala-content div {
   background: #1e1e1e;
   color: #fff;
   border-radius: 8px;
@@ -79,6 +79,14 @@
   box-shadow: 0 1px 4px #0003;
   text-align: center;
   min-width: 60px;
+}
+
+.reserva__sala-content div.selected {
+  border: 2px solid #f91c36;
+  background: #f91c36;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px #f91c36cc;
 }
 
 .reserva__seats {
@@ -244,18 +252,56 @@
   .reserva__selectors {
     width: 100%;
   }
+  .reserva__seats {
+    width: 100%;
+    margin-top: 12px;
+  }
+  .reserva__sala {
+    width: 100%;
+    padding: 12px 8px 10px 8px;
+  }
 }
 
 @media (max-width: 600px) {
+  .reserva__container {
+    padding: 60px 0 12px 0;
+    gap: 8px;
+  }
   .reserva__container-content {
-    padding: 8px 2px;
-    max-width: 100vw;
+    padding: 4px 0;
+    gap: 8px;
+    overflow-y: auto;
+    max-height: 80vh;
   }
-  .reserva__container h1 {
-    font-size: 28px;
+  .reserva__fecha, .reserva__hora, .reserva__formato, .reserva__sala {
+    padding: 8px 6px 6px 6px;
+    border-radius: 8px;
   }
-  .reserva__container h2 {
-    font-size: 16px;
+  .reserva__fecha-content, .reserva__hora-content, .reserva__formato-content, .reserva__sala-content {
+    gap: 6px;
+  }
+  .reserva__fecha-content div, .reserva__hora-content div, .reserva__formato-content div, .reserva__sala-content div {
+    padding: 6px 8px;
+    font-size: 12px;
+    min-width: 36px;
+    border-radius: 6px;
+  }
+  .seat-selector__confirm-btn {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    width: 90vw;
+    max-width: 340px;
+    left: 0;
+    right: 0;
+    display: block;
+  }
+  .reserva-modal__img {
+    width: 60px;
+    height: 100px;
+    border-radius: 8px;
   }
 }
 

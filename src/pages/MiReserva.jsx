@@ -75,6 +75,7 @@ const MiReserva = () => {
               <li><b>Fecha:</b> {reserva.fecha}</li>
               <li><b>Hora:</b> {reserva.hora}</li>
               <li><b>Formato:</b> {reserva.formato}</li>
+              <li><b>Sala:</b> {reserva.sala}</li>
               <li><b>Asientos:</b> {Array.isArray(reserva.asientos) ? reserva.asientos.join(", ") : reserva.asientos}</li>
               {reserva.combo && <li><b>Combo:</b> {reserva.combo} {reserva.comboPrecio && (<span style={{ color: "#f91c36", fontWeight: 600 }}>- ${reserva.comboPrecio.toLocaleString()}</span>)}</li>}
             </ul>

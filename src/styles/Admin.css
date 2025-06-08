@@ -243,17 +243,23 @@ body {
     font-size: 32px;
   }
 }
-
 @media (max-width: 600px) {
   .admin__container {
-    padding: 60px 2vw 20px;
-    gap: 16px;
+    padding: 30px 0 8px 0;
+    gap: 8px;
   }
   .admin__section {
-    padding: 8px;
-    font-size: 14px;
+    padding: 4px;
+    font-size: 12px;
+    border-radius: 8px;
   }
   .admin__title {
-    font-size: 20px;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+  .admin__btn {
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    border-radius: 6px;
   }
 }

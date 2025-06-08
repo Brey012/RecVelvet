@@ -7,8 +7,11 @@ import { useAuth } from "../context/AuthContext";
 const NavBar = () => {
   const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
   const navigate = useNavigate();
+
+  const isMobile = window.innerWidth <= 600;
 
   // --- Búsqueda de películas ---
   const [search, setSearch] = useState("");
@@ -71,8 +74,22 @@ const NavBar = () => {
           className="navbar__logo"
         />
       </Link>
-
-      <section className="navbar__navigation">
+      {isMobile && (
+        <button
+          className="navbar__hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Abrir menú"
+        >
+          <span className="navbar__hamburger-bar"></span>
+          <span className="navbar__hamburger-bar"></span>
+          <span className="navbar__hamburger-bar"></span>
+        </button>
+      )}
+      <section
+        className={`navbar__navigation${
+          isMobile ? " navbar__navigation--mobile" : ""
+        }${menuOpen ? " open" : ""}`}
+      >
         <ul className="navbar__navigation-items">
           <li>
             <Link to="/cartelera">Cartelera</Link>
@@ -87,8 +104,11 @@ const NavBar = () => {
               <Link to="/admin">Admin</Link>
             </li>
           )}
-          <li className="navbar__navigation-search" style={{ position: "relative" }}>
-            <div style={{ position: 'relative', width: 220 }}>
+          <li
+            className="navbar__navigation-search"
+            style={{ position: "relative" }}
+          >
+            <div style={{ position: "relative", width: 220 }}>
               <input
                 type="text"
                 className="navbar__navigation-input"
@@ -98,44 +118,59 @@ const NavBar = () => {
                 onFocus={() => search && setShowDropdown(true)}
                 autoComplete="off"
                 style={{
-                  border: showDropdown ? '2px solid #f91c36' : '1px solid #888',
-                  borderRadius: '8px',
-                  padding: '8px 36px 8px 14px',
-                  boxShadow: showDropdown ? '0 4px 24px #f91c3622' : 'none',
-                  transition: 'all 0.18s',
-                  background: '#232323',
-                  color: '#fff',
-                  width: '100%',
-                  outline: showDropdown ? '2px solid #f91c36' : 'none',
+                  border: showDropdown ? "2px solid #f91c36" : "1px solid #888",
+                  borderRadius: "8px",
+                  padding: "8px 36px 8px 14px",
+                  boxShadow: showDropdown ? "0 4px 24px #f91c3622" : "none",
+                  transition: "all 0.18s",
+                  background: "#232323",
+                  color: "#fff",
+                  width: "100%",
+                  outline: showDropdown ? "2px solid #f91c36" : "none",
                 }}
-                onKeyDown={e => {
-                  if (e.key === 'Enter' && filtered.length > 0) {
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && filtered.length > 0) {
                     handleSelectMovie(filtered[0]);
                   }
                 }}
               />
-              <SearchIcon className="navbar__navigation-icon" style={{ position: 'absolute', right: 10, top: 10, color: '#f91c36', pointerEvents: 'none' }} />
+              <SearchIcon
+                className="navbar__navigation-icon"
+                style={{
+                  position: "absolute",
+                  right: 10,
+                  top: 10,
+                  color: "#f91c36",
+                  pointerEvents: "none",
+                }}
+              />
               {showDropdown && (
                 <ul
                   className="navbar__search-dropdown"
                   style={{
-                    position: 'absolute',
+                    position: "absolute",
                     top: 40,
                     left: 0,
-                    width: '100%',
-                    background: '#181818',
+                    width: "100%",
+                    background: "#181818",
                     borderRadius: 10,
-                    boxShadow: '0 8px 32px #000a',
+                    boxShadow: "0 8px 32px #000a",
                     zIndex: 100,
                     padding: 0,
                     margin: 0,
-                    listStyle: 'none',
-                    animation: 'fadeInDropdown 0.18s',
-                    border: '1.5px solid #f91c36',
+                    listStyle: "none",
+                    animation: "fadeInDropdown 0.18s",
+                    border: "1.5px solid #f91c36",
                   }}
                 >
                   {filtered.length === 0 && (
-                    <li style={{ color: '#bbb', padding: '10px 18px', textAlign: 'center' }}>
+                    <li
+                      style={{
+                        color: "#bbb",
+                        padding: "10px 18px",
+                        textAlign: "center",
+                      }}
+                    >
                       No se encontraron resultados
                     </li>
                   )}
@@ -144,16 +179,16 @@ const NavBar = () => {
                       key={p.id}
                       className="navbar__search-dropdown-item"
                       style={{
-                        padding: '10px 18px',
-                        cursor: 'pointer',
-                        color: '#fff',
-                        background: idx === 0 ? '#2a2a2a' : 'none',
-                        borderBottom: '1px solid #222',
-                        transition: 'background 0.15s',
+                        padding: "10px 18px",
+                        cursor: "pointer",
+                        color: "#fff",
+                        background: idx === 0 ? "#2a2a2a" : "none",
+                        borderBottom: "1px solid #222",
+                        transition: "background 0.15s",
                       }}
                       onMouseDown={() => handleSelectMovie(p)}
-                      onMouseOver={e => e.currentTarget.style.background = '#2a2a2a'}
-                      onMouseOut={e => e.currentTarget.style.background = 'none'}
+                      onMouseOver={(e) => (e.currentTarget.style.background = "#2a2a2a")}
+                      onMouseOut={(e) => (e.currentTarget.style.background = "none")}
                     >
                       {p.titulo_original}
                     </li>
