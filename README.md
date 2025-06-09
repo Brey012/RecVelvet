@@ -42,7 +42,7 @@ recvelvet/
 
 1. **Clona el repositorio:**
    ```pwsh
-   git clone <https://github.com/Brey012/RecVelvet.git>
+   git clone https://github.com/Brey012/RecVelvet.git
    cd recvelvet
    ```
 2. **Instala las dependencias:**
