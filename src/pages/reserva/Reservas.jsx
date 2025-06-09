@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../../styles/Reservas.css";
 import { nextDay } from "date-fns";
 import ComboSelector from "./ComboSelector";
+import { confirmarAsientos } from '../../services/asientosService';
 
 const fechas = [
   { label: "Lun", value: "Lunes" },
@@ -82,10 +83,17 @@ const Reservas = () => {
   const [customDate, setCustomDate] = useState(null);
   const [showCombo, setShowCombo] = useState(false);
   const [sala, setSala] = useState(salas[0]);
+  const [confirmada, setConfirmada] = useState(false);
 
   // Para guardar la reserva (puedes luego usar contexto o localStorage)
   const [reserva, setReserva] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  const funcionId = selectedMovie && fecha && hora && formato && sala
+    ? `${selectedMovie.name}_${fecha}_${hora}_${formato}_${sala}`.replace(/\s+/g, '_')
+    : null;
+  const usuarioId = user?.uid || user?.email || user?.fullName || 'anonimo';
 
   useEffect(() => {
     // Solo buscar si hay película, fecha, hora y formato seleccionados
@@ -111,6 +119,10 @@ const Reservas = () => {
   }, [selectedMovie, fecha, hora, formato]);
 
   const handleConfirm = async () => {
+    if (funcionId && asientos.length > 0) {
+      await confirmarAsientos(funcionId, asientos, usuarioId);
+      setConfirmada(true);
+    }
     setShowCombo(true);
   };
 
@@ -384,6 +396,9 @@ const Reservas = () => {
         <div className="reserva__seats">
           <SeatSelector
             setAsientosSeleccionados={setAsientos}
+            funcionId={funcionId}
+            usuarioId={usuarioId}
+            confirmada={confirmada}
             asientosOcupados={asientosOcupados}
           />
         </div>

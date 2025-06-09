@@ -263,3 +263,415 @@ body {
     border-radius: 6px;
   }
 }
+
+.admin__cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+  margin-bottom: 36px;
+  width: 100%;
+  justify-items: stretch;
+  align-items: stretch;
+  min-height: 420px;
+}
+
+.admin__card {
+  background: linear-gradient(135deg, #181818 70%, #232323 100%);
+  border-radius: 48px;
+  box-shadow: 0 4px 32px #f91c36cc, 0 2px 16px #000a;
+  padding: 36px 32px 28px 32px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 420px;
+  height: 420px;
+  border: 2.5px solid #f91c36;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.admin__card h2 {
+  color: #f91c36;
+  font-size: 2rem;
+  margin-bottom: 18px;
+  text-align: center;
+  text-shadow: 0 2px 8px #f91c36cc, 0 1px 2px #000a;
+  letter-spacing: 1px;
+}
+
+/* --- MINIMALISTA Y ELEGANTE PARA PANEL ADMIN --- */
+.admin__item.minimal {
+  background: #232326;
+  border: none;
+  box-shadow: none;
+  padding: 18px 24px 16px 24px;
+  margin-bottom: 14px;
+  gap: 8px;
+  border-radius: 14px;
+  position: relative;
+  transition: box-shadow 0.18s, background 0.18s;
+  border-bottom: 1px solid #232326;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.admin__item.minimal:last-child {
+  border-bottom: none;
+}
+.admin__item.minimal:hover {
+  background: #28282b;
+  box-shadow: 0 2px 16px #f91c3622, 0 1px 4px #0002;
+}
+.admin__item-header.minimal {
+  gap: 14px;
+  margin-bottom: 0;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+}
+.admin__user-avatar.minimal,
+.admin__movie-icon.minimal {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #19191a;
+  border: 1px solid #232326;
+  color: #f91c36;
+  font-size: 1.2rem;
+  box-shadow: none;
+}
+.admin__user-name.minimal,
+.admin__movie-title.minimal {
+  font-weight: 600;
+  font-size: 1.13rem;
+  color: #f3f3f3;
+  letter-spacing: 0.01em;
+}
+.admin__user-email.minimal,
+.admin__role.minimal,
+.admin__movie-status.minimal,
+.admin__reserva-info-row.minimal,
+.admin__reserva-cliente.minimal,
+.admin__reserva-sala.minimal {
+  color: #8a8a8a;
+  font-size: 0.97rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  margin-left: 0;
+  margin-bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+.admin__reserva-movie.minimal {
+  color: #f91c36;
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+.admin__buttons.minimal {
+  gap: 8px;
+  margin-top: 8px;
+  opacity: 1;
+  pointer-events: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.admin__btn.minimal {
+  background: #f91c36;
+  color: #fff;
+  border: none;
+  box-shadow: 0 1px 6px #f91c3622;
+  padding: 7px 12px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  opacity: 1;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admin__btn.eliminar.minimal {
+  background: none;
+  color: #f91c36;
+  border: 1.5px solid #f91c36;
+  box-shadow: none;
+}
+.admin__btn.eliminar.minimal:hover {
+  background: #f91c36;
+  color: #fff;
+}
+.admin__btn.eliminar.minimal svg {
+  stroke: #f91c36;
+  background: none;
+  transition: stroke 0.2s;
+}
+.admin__btn.eliminar.minimal:hover svg {
+  stroke: #fff;
+}
+.admin__btn.modificar.minimal {
+  background: none;
+  color: #f91c36;
+  border: 1.5px solid #f91c36;
+  box-shadow: none;
+}
+.admin__btn.modificar.minimal:hover {
+  background: #f91c36;
+  color: #fff;
+}
+.admin__btn.modificar.minimal svg {
+  stroke: #f91c36;
+  background: none;
+  transition: stroke 0.2s;
+}
+.admin__btn.modificar.minimal:hover svg {
+  stroke: #fff;
+}
+.admin__btn.cambiar.minimal {
+  background: none;
+  color: #f91c36;
+  border: 1.5px solid #f91c36;
+  box-shadow: none;
+}
+.admin__btn.cambiar.minimal:hover {
+  background: #f91c36;
+  color: #fff;
+}
+.admin__btn.cambiar.minimal svg {
+  stroke: #f91c36;
+  background: none;
+  transition: stroke 0.2s;
+}
+.admin__btn.cambiar.minimal:hover svg {
+  stroke: #fff;
+}
+.admin__item--empty.minimal {
+  color: #555;
+  font-size: 1.05rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 32px 0 32px 0;
+  text-align: center;
+}
+.icon-trash::before {
+  content: '\1F5D1'; /* Unicode papelera */
+  font-family: inherit;
+}
+.icon-edit::before {
+  content: '\270E'; /* Unicode lápiz */
+  font-family: inherit;
+}
+.icon-switch::before {
+  content: '\21BB'; /* Unicode flecha circular */
+  font-family: inherit;
+}
+
+.admin__list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 24px; /* Espacio extra para separar el scroll del contenido */
+  margin-bottom: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #f91c36 #232326;
+}
+.admin__list::-webkit-scrollbar {
+  width: 10px;
+  background: #232326;
+  border-radius: 8px;
+}
+.admin__list::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #f91c36 60%, #c31327 100%);
+  border-radius: 8px;
+  border: 2.5px solid #232326;
+}
+.admin__list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #f91c36 80%, #c31327 100%);
+}
+.admin__list::-webkit-scrollbar-track {
+  background: #232326;
+  border-radius: 8px;
+}
+@media (max-width: 900px) {
+  .admin__list {
+    padding-right: 10px;
+  }
+}
+
+.admin__item {
+  background: #232323ee;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  padding: 16px 14px 12px 14px;
+  box-shadow: 0 1px 8px #0005;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1.5px solid #f91c36;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+.admin__item:last-child {
+  margin-bottom: 0;
+}
+
+.admin__buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.admin__user-info, .admin__pelicula-info, .admin__reserva-info {
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #fff;
+  display: block;
+  margin-bottom: 2px;
+  word-break: break-word;
+}
+
+.admin__role {
+  color: #fbc02d;
+  font-size: 0.95em;
+  margin-left: 4px;
+}
+
+.admin__btn {
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px #0003;
+}
+
+.admin__btn.eliminar {
+  background: #f91c36;
+  color: #fff;
+}
+.admin__btn.eliminar:hover {
+  background: #c31327;
+}
+.admin__btn.modificar {
+  background: #232323;
+  color: #f91c36;
+  border: 1.5px solid #f91c36;
+}
+.admin__btn.modificar:hover {
+  background: #f91c36;
+  color: #fff;
+}
+
+.admin__item-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.admin__user-avatar {
+  font-size: 1.5rem;
+  background: #232323;
+  border-radius: 50%;
+  padding: 4px 8px;
+  color: #f91c36;
+  border: 1.5px solid #f91c36;
+  box-shadow: 0 1px 4px #f91c3622;
+}
+.admin__user-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.admin__user-email {
+  font-size: 0.98rem;
+  color: #aaa;
+  margin-bottom: 2px;
+  margin-left: 32px;
+}
+.admin__role {
+  font-size: 0.95em;
+  color: #fbc02d;
+  margin-left: 32px;
+  margin-bottom: 4px;
+}
+.admin__movie-icon {
+  font-size: 1.5rem;
+  color: #f91c36;
+  background: #232323;
+  border-radius: 50%;
+  padding: 4px 8px;
+  border: 1.5px solid #f91c36;
+  box-shadow: 0 1px 4px #f91c3622;
+}
+.admin__movie-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #fff;
+}
+.admin__movie-status {
+  font-size: 1rem;
+  margin-left: 32px;
+  margin-bottom: 4px;
+}
+.admin__reserva-movie {
+  font-size: 1.1rem;
+  color: #f91c36;
+  font-weight: 600;
+}
+.admin__reserva-cliente {
+  font-size: 1rem;
+  color: #fff;
+  margin-left: 18px;
+}
+.admin__reserva-info-row {
+  margin-left: 32px;
+  margin-bottom: 4px;
+  font-size: 0.98rem;
+  color: #aaa;
+}
+.admin__item--empty {
+  text-align: center;
+  color: #888;
+  background: none;
+  border: none;
+  box-shadow: none;
+  font-size: 1.1rem;
+  padding: 32px 0 32px 0;
+}
+
+@media (max-width: 1200px) {
+  .admin__cards-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .admin__card {
+    min-height: 420px;
+    height: 420px;
+  }
+}
+@media (max-width: 900px) {
+  .admin__cards-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .admin__card {
+    min-height: 220px;
+    height: auto;
+    padding: 18px 8px 14px 8px;
+    border-radius: 18px;
+  }
+  .admin__card h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+}

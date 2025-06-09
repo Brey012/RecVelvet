@@ -181,6 +181,119 @@
       "cliente": "Administrador",
       "combo": "Combo Nachos",
       "comboPrecio": 20000
+    },
+    {
+      "id": "bc83",
+      "pelicula": "The Godfather",
+      "fecha": "10/6/2025",
+      "hora": "12:00",
+      "formato": "3D",
+      "sala": "Sala Kubrick",
+      "asientos": [
+        "D3",
+        "D4"
+      ],
+      "cliente": "Breyner",
+      "combo": "Combo Nachos",
+      "comboPrecio": 20000
+    },
+    {
+      "id": "2a7f",
+      "pelicula": "The Godfather",
+      "fecha": "11/6/2025",
+      "hora": "12:00",
+      "formato": "3D",
+      "sala": "Sala Tarantino",
+      "asientos": [
+        "E2",
+        "E3",
+        "E4",
+        "F4"
+      ],
+      "cliente": "Fabian",
+      "combo": "Combo Familiar",
+      "comboPrecio": 35000
+    },
+    {
+      "id": "6cc1",
+      "pelicula": "The Godfather",
+      "fecha": "11/6/2025",
+      "hora": "12:00",
+      "formato": "3D",
+      "sala": "Sala Tarantino",
+      "asientos": [
+        "E2",
+        "E3",
+        "E4",
+        "F4"
+      ],
+      "cliente": "Fabian",
+      "combo": null,
+      "comboPrecio": null
+    },
+    {
+      "id": "3778",
+      "pelicula": "The Godfather",
+      "fecha": "11/6/2025",
+      "hora": "12:00",
+      "formato": "3D",
+      "sala": "Sala Tarantino",
+      "asientos": [
+        "E2",
+        "E3",
+        "E4",
+        "F4"
+      ],
+      "cliente": "Fabian",
+      "combo": "Combo Familiar",
+      "comboPrecio": 35000
+    },
+    {
+      "id": "675b",
+      "pelicula": "The Godfather",
+      "fecha": "11/6/2025",
+      "hora": "12:00",
+      "formato": "3D",
+      "sala": "Sala Kubrick",
+      "asientos": [
+        "D8",
+        "D7",
+        "D6"
+      ],
+      "cliente": "Breyner",
+      "combo": null,
+      "comboPrecio": null
+    },
+    {
+      "id": "2b12",
+      "pelicula": "The Godfather",
+      "fecha": "11/6/2025",
+      "hora": "14:00",
+      "formato": "3D",
+      "sala": "Sala Kubrick",
+      "asientos": [
+        "E6",
+        "E8"
+      ],
+      "cliente": "Breyner",
+      "combo": "Combo Familiar",
+      "comboPrecio": 35000
+    },
+    {
+      "id": "0c1f",
+      "pelicula": "The Godfather",
+      "fecha": "11/6/2025",
+      "hora": "14:00",
+      "formato": "3D",
+      "sala": "Sala Kubrick",
+      "asientos": [
+        "D7",
+        "D8",
+        "D9"
+      ],
+      "cliente": "Fabian",
+      "combo": "Combo Familiar",
+      "comboPrecio": 35000
     }
   ],
   "peliculas": [

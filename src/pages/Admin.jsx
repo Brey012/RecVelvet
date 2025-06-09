@@ -84,72 +84,101 @@ const Admin = () => {
   return (
     <div className="admin__container">
       <h1 className="admin__title" style={{ letterSpacing: 2, marginBottom: 32 }}>Panel de Administración</h1>
-      <div className="admin__grid">
-        <div className="admin__grid-row">
-          <section className="admin__section admin__section--usuarios">
-            <h2>Usuarios</h2>
-            <ul className="admin__list">
-              {users.map(u => (
-                <li key={u.id} className="admin__item">
-                  <span className="admin__user-info">
-                    <b>{u.fullName}</b> <span style={{ color: '#888' }}>({u.email})</span> <span className="admin__role">[{u.role}]</span>
+      <div className="admin__cards-grid">
+        <section className="admin__card admin__section--usuarios">
+          <h2>Usuarios</h2>
+          <ul className="admin__list">
+            {users.length === 0 ? (
+              <li className="admin__item admin__item--empty minimal">No hay usuarios registrados.</li>
+            ) : users.map(u => (
+              <li key={u.id} className="admin__item minimal">
+                <div className="admin__item-header minimal">
+                  <span className="admin__user-avatar minimal" aria-label="Avatar usuario">
+                    {/* SVG avatar minimalista */}
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="11" cy="7.5" r="4.5" fill="#232326" stroke="#f91c36" strokeWidth="1.2"/>
+                      <ellipse cx="11" cy="16.5" rx="6.5" ry="3.5" fill="#232326" stroke="#f91c36" strokeWidth="1.2"/>
+                    </svg>
                   </span>
-                  <div className="admin__buttons">
-                    <button className="admin__btn eliminar" title="Eliminar usuario" onClick={() => eliminarUsuario(u.id)}>
-                      🗑️ Eliminar
-                    </button>
-                    <button className="admin__btn modificar" title="Modificar usuario" disabled style={{ opacity: 0.5 }}>
-                      ✏️ Modificar
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section className="admin__section admin__section--peliculas">
-            <h2>Películas</h2>
-            <ul className="admin__list">
-              {peliculas.map(p => (
-                <li key={p.id} className="admin__item">
-                  <span className="admin__pelicula-info">
-                    <b>{p.titulo_original}</b> — <span style={{ color: p.estado === "cartelera" ? '#1976d2' : '#fbc02d', fontWeight: 600 }}>{p.estado === "cartelera" ? "En Cartelera" : "En Estreno"}</span>
+                  <span className="admin__user-name minimal">{u.fullName}</span>
+                </div>
+                <span className="admin__user-email minimal">{u.email}</span>
+                <span className="admin__role minimal">{u.role}</span>
+                <div className="admin__buttons minimal">
+                  <button className="admin__btn eliminar minimal" title="Eliminar usuario" onClick={() => eliminarUsuario(u.id)}>
+                    {/* SVG trash icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f91c36" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m5 0V4a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                  </button>
+                  <button className="admin__btn modificar minimal" title="Modificar usuario" disabled style={{ opacity: 0.5 }}>
+                    {/* SVG edit icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f91c36" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section className="admin__card admin__section--peliculas">
+          <h2>Películas</h2>
+          <ul className="admin__list">
+            {peliculas.length === 0 ? (
+              <li className="admin__item admin__item--empty minimal">No hay películas registradas.</li>
+            ) : peliculas.map(p => (
+              <li key={p.id} className="admin__item minimal">
+                <div className="admin__item-header minimal">
+                  <span className="admin__movie-icon minimal" aria-label="Icono película">
+                    {/* SVG claqueta minimalista */}
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="3" y="7" width="16" height="10" rx="2" fill="#232326" stroke="#f91c36" strokeWidth="1.2"/>
+                      <rect x="3" y="5" width="16" height="4" rx="1.5" fill="#f91c36" fillOpacity="0.18" />
+                    </svg>
                   </span>
-                  <div className="admin__buttons">
-                    <button
-                      className="admin__btn modificar"
-                      title="Cambiar estado"
-                      onClick={() => cambiarEstadoPelicula(p)}
-                    >
-                      🔄 Cambiar a {p.estado === "cartelera" ? "Estreno" : "Cartelera"}
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
-        <div className="admin__grid-row">
-          <section className="admin__section admin__section--reservas">
-            <h2>Reservas</h2>
-            <ul className="admin__list">
-              {reservas.map(r => (
-                <li key={r.id} className="admin__item">
-                  <span className="admin__reserva-info">
-                    <b>Película:</b> {r.pelicula} <span style={{ margin: '0 8px' }}>|</span> <b>Cliente:</b> {r.cliente} <span style={{ margin: '0 8px' }}>|</span> <b>Asientos:</b> <span style={{ color: '#2e7d32' }}>{r.asientos?.join(", ")}</span>
-                  </span>
-                  <div className="admin__buttons">
-                    <button className="admin__btn eliminar" title="Eliminar reserva" onClick={() => eliminarReserva(r.id)}>
-                      🗑️ Eliminar
-                    </button>
-                    <button className="admin__btn modificar" title="Modificar reserva" onClick={() => abrirEditarReserva(r)}>
-                      ✏️ Modificar
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+                  <span className="admin__movie-title minimal">{p.titulo_original}</span>
+                </div>
+                <span className="admin__movie-status minimal" data-status={p.estado}>{p.estado === "cartelera" ? "En Cartelera" : "En Estreno"}</span>
+                <div className="admin__buttons minimal">
+                  <button
+                    className="admin__btn cambiar minimal"
+                    title="Cambiar estado"
+                    onClick={() => cambiarEstadoPelicula(p)}
+                  >
+                    {/* SVG swap/refresh icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f91c36" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.13-3.36L23 10M1 14l5.36 5.36A9 9 0 0 0 20.49 15"/></svg>
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section className="admin__card admin__section--reservas">
+          <h2>Reservas</h2>
+          <ul className="admin__list">
+            {reservas.length === 0 ? (
+              <li className="admin__item admin__item--empty minimal">No hay reservas registradas.</li>
+            ) : reservas.map(r => (
+              <li key={r.id} className="admin__item minimal">
+                <div className="admin__item-header minimal">
+                  <span className="admin__reserva-movie minimal">{r.pelicula}</span>
+                  <span className="admin__reserva-cliente minimal">{r.cliente}</span>
+                </div>
+                <div className="admin__reserva-info-row minimal">
+                  <span className="admin__reserva-asientos minimal">{Array.isArray(r.asientos) ? r.asientos.join(", ") : r.asientos}</span>
+                  <span className="admin__reserva-sala minimal">{r.sala}</span>
+                </div>
+                <div className="admin__buttons minimal">
+                  <button className="admin__btn eliminar minimal" title="Eliminar reserva" onClick={() => eliminarReserva(r.id)}>
+                    {/* SVG trash icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f91c36" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m5 0V4a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                  </button>
+                  <button className="admin__btn modificar minimal" title="Modificar reserva" onClick={() => abrirEditarReserva(r)}>
+                    {/* SVG edit icon */}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f91c36" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
       {/* Modal de edición de reserva */}
       {modalOpen && reservaEdit && (
