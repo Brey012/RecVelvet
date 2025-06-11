@@ -22,278 +22,36 @@
   ],
   "reservas": [
     {
-      "id": "9b87",
-      "pelicula": "Interstellar",
-      "fecha": "9/7/2025",
-      "hora": "14:00",
-      "formato": "3D",
-      "asientos": [
-        "E9"
-      ],
-      "cliente": "Administrador",
-      "combo": null,
-      "comboPrecio": null
-    },
-    {
-      "id": "8215",
-      "pelicula": "Seven",
-      "fecha": "11/6/2025",
-      "hora": "14:00",
-      "formato": "4DX",
-      "asientos": [
-        "C8"
-      ],
-      "cliente": "Administrador",
-      "combo": "Combo Clásico",
-      "comboPrecio": 18000
-    },
-    {
-      "id": "3894",
-      "pelicula": "Star Wars",
-      "fecha": "11/6/2025",
-      "hora": "12:00",
-      "formato": "2D",
-      "asientos": [
-        "F7"
-      ],
-      "cliente": "Administrador",
-      "combo": "Combo Nachos",
-      "comboPrecio": 20000
-    },
-    {
-      "id": "9f5c",
+      "id": "86d5",
       "pelicula": "The Godfather",
-      "fecha": "11/6/2025",
-      "hora": "14:00",
-      "formato": "3D",
-      "asientos": [
-        "G5"
-      ],
-      "cliente": "Fabian",
-      "combo": "Combo Dulce",
-      "comboPrecio": 17000
-    },
-    {
-      "id": "4620",
-      "pelicula": "Star Wars",
-      "fecha": "10/6/2025",
-      "hora": "14:00",
-      "formato": "3D",
-      "asientos": [
-        "F3"
-      ],
-      "cliente": "Fabian",
-      "combo": "Combo Familiar",
-      "comboPrecio": 35000
-    },
-    {
-      "id": "57a6",
-      "pelicula": "Godfellas",
-      "fecha": "10/6/2025",
+      "fecha": "17/6/2025",
       "hora": "12:00",
-      "formato": "3D",
+      "formato": "4DX",
+      "sala": "Sala Kubrick",
       "asientos": [
-        "E8"
-      ],
-      "cliente": "Fabian",
-      "combo": "Combo Nachos",
-      "comboPrecio": 20000
-    },
-    {
-      "id": "adc1",
-      "pelicula": "Back to the Future",
-      "fecha": "11/6/2025",
-      "hora": "14:00",
-      "formato": "3D",
-      "asientos": [
-        "D5",
+        "B6",
+        "C6",
         "D6"
       ],
-      "cliente": "Fabian",
-      "combo": null,
-      "comboPrecio": null
-    },
-    {
-      "id": "421d",
-      "pelicula": "Inception",
-      "fecha": "10/6/2025",
-      "hora": "16:00",
-      "formato": "3D",
-      "asientos": [
-        "D4",
-        "D5"
-      ],
-      "cliente": "Administrador",
-      "combo": "Combo Nachos",
-      "comboPrecio": 20000
-    },
-    {
-      "id": "51e3",
-      "pelicula": "Star Wars",
-      "fecha": "11/6/2025",
-      "hora": "14:00",
-      "formato": "4DX",
-      "asientos": [
-        "C5",
-        "F11"
-      ],
-      "cliente": "Administrador",
-      "combo": "Combo Familiar",
-      "comboPrecio": 35000
-    },
-    {
-      "id": "ec1a",
-      "pelicula": "Star Wars",
-      "fecha": "11/6/2025",
-      "hora": "14:00",
-      "formato": "4DX",
-      "asientos": [
-        "C5",
-        "F11"
-      ],
-      "cliente": "Administrador",
-      "combo": "Combo Amigos",
-      "comboPrecio": 27000
-    },
-    {
-      "id": "760b",
-      "pelicula": "The Dark Knight",
-      "fecha": "11/6/2025",
-      "hora": "14:00",
-      "formato": "3D",
-      "asientos": [
-        "I6"
-      ],
-      "cliente": "Administrador",
-      "combo": "Combo Familiar",
-      "comboPrecio": 35000
-    },
-    {
-      "id": "6e4d",
-      "pelicula": "The Dark Knight",
-      "fecha": "11/6/2025",
-      "hora": "16:00",
-      "formato": "IMAX",
-      "sala": "Sala Tarantino",
-      "asientos": [
-        "F7"
-      ],
-      "cliente": "Administrador",
-      "combo": "Combo Nachos",
-      "comboPrecio": 20000
-    },
-    {
-      "id": "bc83",
-      "pelicula": "The Godfather",
-      "fecha": "10/6/2025",
-      "hora": "12:00",
-      "formato": "3D",
-      "sala": "Sala Kubrick",
-      "asientos": [
-        "D3",
-        "D4"
-      ],
       "cliente": "Breyner",
-      "combo": "Combo Nachos",
-      "comboPrecio": 20000
-    },
-    {
-      "id": "2a7f",
-      "pelicula": "The Godfather",
-      "fecha": "11/6/2025",
-      "hora": "12:00",
-      "formato": "3D",
-      "sala": "Sala Tarantino",
-      "asientos": [
-        "E2",
-        "E3",
-        "E4",
-        "F4"
-      ],
-      "cliente": "Fabian",
       "combo": "Combo Familiar",
       "comboPrecio": 35000
     },
     {
-      "id": "6cc1",
+      "id": "4d60",
       "pelicula": "The Godfather",
-      "fecha": "11/6/2025",
+      "fecha": "17/6/2025",
       "hora": "12:00",
-      "formato": "3D",
-      "sala": "Sala Tarantino",
-      "asientos": [
-        "E2",
-        "E3",
-        "E4",
-        "F4"
-      ],
-      "cliente": "Fabian",
-      "combo": null,
-      "comboPrecio": null
-    },
-    {
-      "id": "3778",
-      "pelicula": "The Godfather",
-      "fecha": "11/6/2025",
-      "hora": "12:00",
-      "formato": "3D",
-      "sala": "Sala Tarantino",
-      "asientos": [
-        "E2",
-        "E3",
-        "E4",
-        "F4"
-      ],
-      "cliente": "Fabian",
-      "combo": "Combo Familiar",
-      "comboPrecio": 35000
-    },
-    {
-      "id": "675b",
-      "pelicula": "The Godfather",
-      "fecha": "11/6/2025",
-      "hora": "12:00",
-      "formato": "3D",
+      "formato": "4DX",
       "sala": "Sala Kubrick",
       "asientos": [
-        "D8",
-        "D7",
+        "B6",
+        "C6",
         "D6"
       ],
       "cliente": "Breyner",
       "combo": null,
       "comboPrecio": null
-    },
-    {
-      "id": "2b12",
-      "pelicula": "The Godfather",
-      "fecha": "11/6/2025",
-      "hora": "14:00",
-      "formato": "3D",
-      "sala": "Sala Kubrick",
-      "asientos": [
-        "E6",
-        "E8"
-      ],
-      "cliente": "Breyner",
-      "combo": "Combo Familiar",
-      "comboPrecio": 35000
-    },
-    {
-      "id": "0c1f",
-      "pelicula": "The Godfather",
-      "fecha": "11/6/2025",
-      "hora": "14:00",
-      "formato": "3D",
-      "sala": "Sala Kubrick",
-      "asientos": [
-        "D7",
-        "D8",
-        "D9"
-      ],
-      "cliente": "Fabian",
-      "combo": "Combo Familiar",
-      "comboPrecio": 35000
     }
   ],
   "peliculas": [

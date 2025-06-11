@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/SeatSelector.css';
 import { setAsientosEnEspera, liberarAsientosEnEspera, onAsientosChange } from '../../services/asientosService';
+import Swal from 'sweetalert2';
 
 const rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 const seatsPerRow = 16;
@@ -45,7 +46,19 @@ const SeatSelector = ({
 
   const toggleSeat = (seatId) => {
     if (confirmada) {
-      setAviso('No puedes cambiar tus asientos después de confirmar. Contacta al administrador.');
+      Swal.fire({
+        icon: 'info',
+        title: 'Reserva confirmada',
+        text: 'Tienes que comunicarte con administración para hacer el cambio en tu reserva.',
+        background: '#181818',
+        color: '#fff',
+        iconColor: '#f91c36',
+        confirmButtonColor: '#f91c36',
+        customClass: {
+          popup: 'swal2-custom-popup',
+          confirmButton: 'swal2-custom-confirm',
+        },
+      });
       return;
     }
     if (asientosOcupadosCombinados.includes(seatId)) return;

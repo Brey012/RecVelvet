@@ -8,6 +8,7 @@ import "../../styles/Reservas.css";
 import { nextDay } from "date-fns";
 import ComboSelector from "./ComboSelector";
 import { confirmarAsientos } from '../../services/asientosService';
+import Swal from 'sweetalert2';
 
 const fechas = [
   { label: "Lun", value: "Lunes" },
@@ -119,6 +120,22 @@ const Reservas = () => {
   }, [selectedMovie, fecha, hora, formato]);
 
   const handleConfirm = async () => {
+    if (confirmada) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Reserva ya confirmada',
+        text: 'Tienes que comunicarte con administración para hacer el cambio en tu reserva.',
+        background: '#181818',
+        color: '#fff',
+        iconColor: '#f91c36',
+        confirmButtonColor: '#f91c36',
+        customClass: {
+          popup: 'swal2-custom-popup',
+          confirmButton: 'swal2-custom-confirm',
+        },
+      });
+      return;
+    }
     if (funcionId && asientos.length > 0) {
       await confirmarAsientos(funcionId, asientos, usuarioId);
       setConfirmada(true);
@@ -174,6 +191,23 @@ const Reservas = () => {
     setModalOpen(true);
   };
 
+  // Si la reserva ya está confirmada y el modal está abierto, bloquear los selectores y mostrar alerta si se intenta cambiar
+  const handleBlockedChange = () => {
+    window.Swal && Swal.fire({
+      icon: 'info',
+      title: 'Reserva confirmada',
+      text: 'Tienes que comunicarte con administración para hacer el cambio en tu reserva.',
+      background: '#181818',
+      color: '#fff',
+      iconColor: '#f91c36',
+      confirmButtonColor: '#f91c36',
+      customClass: {
+        popup: 'swal2-custom-popup',
+        confirmButton: 'swal2-custom-confirm',
+      },
+    });
+  };
+
   return (
     <div className="reserva__container">
       <h1>Reservación</h1>
@@ -194,7 +228,7 @@ const Reservas = () => {
                     border: sala === s ? "2px solid #f91c36" : "",
                     background: sala === s ? "#f91c36" : "",
                     color: sala === s ? "#fff" : "",
-                    cursor: "pointer",
+                    cursor: confirmada && modalOpen ? "not-allowed" : "pointer",
                     marginRight: 8,
                     marginBottom: 4,
                     padding: "8px 18px",
@@ -202,7 +236,7 @@ const Reservas = () => {
                     fontWeight: sala === s ? 700 : 500,
                     fontSize: 16,
                   }}
-                  onClick={() => setSala(s)}
+                  onClick={confirmada && modalOpen ? handleBlockedChange : () => setSala(s)}
                 >
                   {s}
                 </div>
@@ -217,7 +251,6 @@ const Reservas = () => {
                 if (f.value === "Calendario" && customDate) {
                   isSelected = true;
                 } else if (diasSemana.includes(f.value) && customDate) {
-                  // Si el día rápido coincide con el día de la semana de customDate
                   const dayName = customDate
                     .toLocaleDateString("es-ES", { weekday: "long" })
                     .toLowerCase();
@@ -233,9 +266,9 @@ const Reservas = () => {
                       border: isSelected ? "2px solid #f91c36" : "",
                       background: isSelected ? "#f91c36" : "",
                       color: isSelected ? "#fff" : "",
-                      cursor: "pointer",
+                      cursor: confirmada && modalOpen ? "not-allowed" : "pointer",
                     }}
-                    onClick={() => {
+                    onClick={confirmada && modalOpen ? handleBlockedChange : () => {
                       if (f.value === "Calendario") {
                         setShowCalendar(true);
                       } else if (diasSemana.includes(f.value)) {
@@ -364,9 +397,9 @@ const Reservas = () => {
                     border: hora === h ? "2px solid #f91c36" : "",
                     background: hora === h ? "#f91c36" : "",
                     color: hora === h ? "#fff" : "",
-                    cursor: "pointer",
+                    cursor: confirmada && modalOpen ? "not-allowed" : "pointer",
                   }}
-                  onClick={() => setHora(h)}
+                  onClick={confirmada && modalOpen ? handleBlockedChange : () => setHora(h)}
                 >
                   {h}
                 </div>
@@ -383,9 +416,9 @@ const Reservas = () => {
                     border: formato === f ? "2px solid #f91c36" : "",
                     background: formato === f ? "#f91c36" : "",
                     color: formato === f ? "#fff" : "",
-                    cursor: "pointer",
+                    cursor: confirmada && modalOpen ? "not-allowed" : "pointer",
                   }}
-                  onClick={() => setFormato(f)}
+                  onClick={confirmada && modalOpen ? handleBlockedChange : () => setFormato(f)}
                 >
                   {f}
                 </div>

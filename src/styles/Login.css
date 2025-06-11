@@ -314,6 +314,20 @@
   transform: scale(1.03);
 }
 
+/* Estilos personalizados para SweetAlert2 */
+.swal2-custom-popup {
+  border-radius: 16px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 0 20px #f91c36aa;
+}
+.swal2-custom-confirm {
+  background: #f91c36 !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  font-size: 18px !important;
+  padding: 10px 32px !important;
+}
+
 @media (max-width: 900px) {
   .login__container-info {
     width: 80%;

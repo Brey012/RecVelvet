@@ -3,6 +3,7 @@ import "../styles/Login.css";
 import { registerUser, loginUser } from "/src/services/authServices";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [isRegister, setIsRegister] = useState(false);
@@ -16,7 +17,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
   const { login } = useAuth();
@@ -35,14 +35,37 @@ const Login = () => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      setMessage("Las contraseñas no coinciden.");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Las contraseñas no coinciden.",
+        background: "#181818",
+        color: "#fff",
+        iconColor: "#f91c36",
+        confirmButtonColor: "#f91c36",
+        customClass: {
+          popup: "swal2-custom-popup",
+          confirmButton: "swal2-custom-confirm",
+        },
+      });
       return;
     }
 
     const result = await registerUser(formData);
-    setMessage(result.message);
-
     if (result.success) {
+      Swal.fire({
+        icon: "success",
+        title: "Registro exitoso",
+        text: result.message,
+        background: "#181818",
+        color: "#fff",
+        iconColor: "#f91c36",
+        confirmButtonColor: "#f91c36",
+        customClass: {
+          popup: "swal2-custom-popup",
+          confirmButton: "swal2-custom-confirm",
+        },
+      });
       setFormData({
         fullName: "",
         email: "",
@@ -50,6 +73,20 @@ const Login = () => {
         confirmPassword: "",
       });
       setIsRegister(false);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: result.message,
+        background: "#181818",
+        color: "#fff",
+        iconColor: "#f91c36",
+        confirmButtonColor: "#f91c36",
+        customClass: {
+          popup: "swal2-custom-popup",
+          confirmButton: "swal2-custom-confirm",
+        },
+      });
     }
   };
 
@@ -58,15 +95,42 @@ const Login = () => {
     e.preventDefault();
 
     const result = await loginUser(loginData);
-    setMessage(result.message);
-
     if (result.success) {
+      Swal.fire({
+        icon: "success",
+        title: "Bienvenido",
+        text: result.message,
+        timer: 1500,
+        showConfirmButton: false,
+        background: "#181818",
+        color: "#fff",
+        iconColor: "#f91c36",
+        confirmButtonColor: "#f91c36",
+        customClass: {
+          popup: "swal2-custom-popup",
+          confirmButton: "swal2-custom-confirm",
+        },
+      });
       login(result.user); // Guarda el usuario completo (incluyendo el rol)
       if (result.user.role === "admin") {
         navigate("/admin");
       } else {
         navigate("/");
       }
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: result.message,
+        background: "#181818",
+        color: "#fff",
+        iconColor: "#f91c36",
+        confirmButtonColor: "#f91c36",
+        customClass: {
+          popup: "swal2-custom-popup",
+          confirmButton: "swal2-custom-confirm",
+        },
+      });
     }
   };
 
@@ -223,7 +287,6 @@ const Login = () => {
             </p>
           </div>
         )}
-        {message && <p className="message">{message}</p>}
       </div>
     </section>
   );
